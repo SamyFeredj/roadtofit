@@ -1,0 +1,13 @@
+<div class="post-container container bg-white p-3 my-3">
+  <%# TODO : retirer container %>
+  <div class="post-header">
+    <div class="row align-items-center">
+      <h3 class="col-10"><%= post.user.prenom.capitalize %> <%= post.user.nom.capitalize %></h3>
+      <%= link_to post_path(post), class: "btn btn-danger col-2", data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer votre post ?"} do %>
+        <strong>X</strong>
+      <% end %>
+    </div>
+  </div>
+    <p><%= post.contenu %></p>
+    <p>Likes : <%= post.total_likes %></p>
+</div>
