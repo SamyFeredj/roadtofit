@@ -2,7 +2,6 @@ require 'json'
 require 'open-uri'
 
 # Cleaning database
-print "Cleaning database..."
 if Rails.env == "development"
   print "> Cleaning database..."
 
@@ -13,7 +12,8 @@ if Rails.env == "development"
 end
 
 # Generating database
-print "Generating database"
+puts "> Generating database..."
+
 img_recette1 = "https://jow.fr/_next/image?url=https%3A%2F%2Fstatic.jow.fr%2F304x304%2Frecipes%2FwcQhjbOgzWIljQ.png&w=1024&q=100"
 img_recette2 = "https://jow.fr/_next/image?url=https%3A%2F%2Fstatic.jow.fr%2F304x304%2Frecipes%2FXytiCjU39g1NkQ.png&w=1024&q=100"
 
@@ -38,6 +38,7 @@ u4 = User.new(prenom: "Laurent", nom: "Millet", email: "laurentmillet@hotmail.fr
 u4.save!
 puts "OK"
 
+puts " ===== "
 # ===== Recettes generation
 
 print "> Recette 1..."
@@ -70,6 +71,7 @@ recette2.photo.attach(io: URI.open(img_recette2), filename: 'recette2.png', cont
 recette2.save!
 puts "OK"
 
+puts " ===== "
 # ===== End of generation
 puts "#{User.count} Users generated successfully"
 puts "#{Recette.count} Recettes generated successfully"
