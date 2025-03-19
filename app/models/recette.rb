@@ -17,4 +17,5 @@ class Recette < ApplicationRecord
   validates :difficulte, presence: true, inclusion: { in: AUTHORIZED_DIFFICULTE }
   validates :temps_de_preparation, presence: true, numericality: { only_integer: true }
   validates :tags, presence: true
+  validates :nom, presence: true
 end
