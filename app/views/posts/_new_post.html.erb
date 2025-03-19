@@ -1,7 +1,4 @@
 <div class="new-post-container container p-3 my-3 bg-white">
   <%# TODO : retirer container %>
-  <%= simple_form_for(post) do |f| %>
-    <%= f.text_field :contenu, label: "Que voulez vous partager ?" %>
-    <%= f.submit "Poster", class: "btn btn-primary" %>
-  <% end %>
+  <%= render "post_form", post: post %>
 </div>
