@@ -6,6 +6,7 @@ if Rails.env == "development"
   print "> Cleaning database..."
 
   Recette.destroy_all
+  Post.destroy_all
   User.destroy_all
 
   puts "OK"
@@ -72,6 +73,20 @@ recette2.save!
 puts "OK"
 
 puts " ===== "
+# ===== Posts generation
+print "> Post 1..."
+p1 = Post.new(contenu: "Salut tout le monde, je suis nouveau sur l'application, j'espère que vous allez bien !", user: u1, total_likes: 0)
+p1.save!
+puts "OK"
+#
+print "> Post 2..."
+p2 = Post.new(contenu: "Je viens de tester la recette de chirashi au saumon et avocat, c'était délicieux !", user: u1, total_likes: 0)
+p2.save!
+puts "OK"
+#
+
+puts " ===== "
 # ===== End of generation
 puts "#{User.count} Users generated successfully"
 puts "#{Recette.count} Recettes generated successfully"
+puts "#{Post.count} Posts generated successfully"
