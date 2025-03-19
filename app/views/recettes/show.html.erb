@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col text-center">
+      <%= image_tag url_for(@recette.photo) %>
+      <h2><%= @recette.nom %></h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <h5>Valeurs Nutritionnelles</h5>
+      <ul>
+        <li>Calories: <%= @recette.calories %></li>
+        <li>Lipides: <%= @recette.lipides %>g </li>
+        <li>Glucides: <%= @recette.glucides %>g </li>
+        <li>Protéines: <%= @recette.proteines %>g</li>
+      </ul>
+      <p>Temps de préparation: <%= @recette.temps_de_preparation %>min</p>
+      <p>Niveau de difficulté: <%= @recette.difficulte %></p>
+      <p>Ingrédients: <%= @recette.ingredients %></p>
+      <p>Tips: <%= @recette.tips %></p>
+      <p>Tags: <%= @recette.tags %></p>
+    </div>
+    <div class="col-6">
+      <p>Instructions: <%= @recette.instructions %></p>
+    </div>
+  </div>
+</div>
