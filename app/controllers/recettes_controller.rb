@@ -7,4 +7,27 @@ class RecettesController < ApplicationController
       @recettes = @recettes.where(sql_subquery, query: "%#{params[:query]}%")
     end
   end
+
+  def show
+    @recette = Recette.find(params[:id])
+  end
+
+  def new
+    @recette = Recette.new
+  end
+
+  def create
+    @recette = Recette.new(recette_params)
+    if @recette.save
+      redirect_to @recette, notice: "Recette ajoutée avec succès !"
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def recette_params
+    params.require(:recette).permit(:nom, :lipides, :glucides, :proteines, :calories, :ingredients, :repas_de_la_journee, :tips, :instructions, :difficulte, :temps_de_preparation, :tags, :photo)
+  end
 end
