@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :posts, dependent: :destroy
+
   REGIMES_ALIMENTAIRES = ["Végétarien", "Halal", "Vegan"]
   OBJECTIFS_PHYSIQUES = ["Prise de muscle", "Perte de poids", "Maintien"]
   SEXE = ["Homme", "Femme"]
