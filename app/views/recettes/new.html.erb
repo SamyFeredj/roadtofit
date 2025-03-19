@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <%= form_with model: @recette do |f| %>
+        <%= f.label :photo, "Photo" %>
+        <%= f.file_field :photo, class: "form-control" %>
+        <%= f.label :calories, "Calories" %>
+        <%= f.text_field :calories, class: "form-control" %>
+        <%= f.label :lipides, "Lipides" %>
+        <%= f.text_field :lipides, class: "form-control" %>
+        <%= f.label :glucides, "Glucides" %>
+        <%= f.text_field :glucides, class: "form-control" %>
+        <%= f.label :proteines, "Protéines" %>
+        <%= f.text_field :proteines, class: "form-control" %>
+        <%= f.label :ingredients, "Ingredients" %>
+        <%= f.text_field :ingredients, class: "form-control" %>
+        <div class="my-3">
+          <%= f.label :repas_de_la_journee, "Repas de la journee" %>
+          <%= f.select :repas_de_la_journee, Recette::AUTHORIZED_REPAS %>
+        </div>
+        <%= f.label :tips, "Tips" %>
+        <%= f.text_field :tips, class: "form-control" %>
+        <%= f.label :instructions, "Instructions" %>
+        <%= f.text_field :instructions, class: "form-control" %>
+        <%= f.label :difficulte, "Difficulté" %>
+        <%= f.text_field :difficulte, class: "form-control" %>
+        <%= f.label :temps_de_preparation, "Temps de preparation" %>
+        <%= f.text_field :temps_de_preparation, class: "form-control" %>
+        <%= f.label :tags, "Tags" %>
+        <%= f.text_field :tags, class: "form-control" %>
+        <div class="mt-3"><%= f.submit "Ajouter la recette" %></div>
+      <% end %>
+    </div>
+  </div>
+</div>
