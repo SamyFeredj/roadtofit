@@ -10,6 +10,9 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     @post.total_likes = 0
     if @post.save!
+      # like generation
+      @like = Like.new(like_flag: 0, post_id: @post.id, user_id: current_user.id)
+      @like.save!
       redirect_to posts_path
     else
       render "index", alert: "Erreur lors de la création du post", status: :unprocessable_entity
