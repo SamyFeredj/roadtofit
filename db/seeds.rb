@@ -86,7 +86,21 @@ puts "OK"
 #
 
 puts " ===== "
+# ===== Likes generation
+count = 0
+[u1, u2, u3, u4].each_with_index do |user, u_index|
+  [p1, p2].each_with_index do |post, p_index|
+    count += 1
+    print "Like n°#{count} : user#{u_index + 1} | post#{p_index + 1}..."
+    like_i = Like.new(user: user, post: post, like_flag: 0)
+    like_i.save!
+    puts "OK"
+  end
+end
+
+puts " ===== "
 # ===== End of generation
 puts "#{User.count} Users generated successfully"
 puts "#{Recette.count} Recettes generated successfully"
 puts "#{Post.count} Posts generated successfully"
+puts "#{Like.count} Likes generated successfully"
