@@ -27,7 +27,7 @@
           </td>
           <td>
             <%= link_to '✏️ Modifier', edit_choix_recette_path(choix), class: 'btn btn-outline-primary btn-sm' %>
-            <%= link_to '🗑 Supprimer', choix_recette_path(choix), method: :delete, data: { confirm: "T'es sûr ?" }, class: 'btn btn-outline-danger btn-sm' %>
+            <%= link_to '🗑 Supprimer', choix_recette_path(choix), data: { turbo_method: :delete, turbo_confirm: "T'es sûr ?" }, class: 'btn btn-outline-danger btn-sm' %>
           </td>
         </tr>
       <% end %>
@@ -35,4 +35,3 @@
   </table>
 </div>
 <%= link_to '🏠 Retour accueil', root_path, class: 'btn btn-outline-dark position-fixed bottom-0 start-0 m-4' %>
-

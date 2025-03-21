@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   resources :recettes, only: [:index, :show, :new, :create]
 
-  resources :choix_recettes, except: [:show]
+  resources :choix_recettes
+  # , except: [:show]
 end
