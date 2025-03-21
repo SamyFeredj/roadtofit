@@ -1,0 +1,13 @@
+<% user = review.user %>
+<div class="review-header d-flex justify-content-between mb-2">
+  <div class="rating">
+    <% Review::AUTHORIZED_RATINGS.each do |number| %>
+      <i class="fa<%= (number > review.note) ? 'r' : 's' %> fa-star"></i>
+    <% end %>
+  </div>
+  <%= link_to review_path(review), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?" } do %>
+    <i class="fa-solid fa-circle-xmark"></i>
+  <% end %>
+</div>
+<h5><%= user.prenom.capitalize %> <%= user.nom.capitalize %></h5>
+<p><%= review.commentaire %></p>
