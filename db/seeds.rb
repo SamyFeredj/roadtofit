@@ -2,7 +2,7 @@ require 'json'
 require 'open-uri'
 
 # Cleaning database
-if Rails.env == "development"
+if Rails.env == "development" || Rails.env == "production"
   print "> Cleaning database..."
 
   Recette.destroy_all
