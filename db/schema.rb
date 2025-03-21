@@ -42,6 +42,20 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_21_142214) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+<<<<<<< HEAD
+=======
+  create_table "choix_recettes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "recette_id", null: false
+    t.date "date"
+    t.boolean "done"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recette_id"], name: "index_choix_recettes_on_recette_id"
+    t.index ["user_id"], name: "index_choix_recettes_on_user_id"
+  end
+
+>>>>>>> master
   create_table "commentaires", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id", null: false
@@ -113,6 +127,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_21_142214) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+<<<<<<< HEAD
+=======
+  add_foreign_key "choix_recettes", "recettes"
+  add_foreign_key "choix_recettes", "users"
+>>>>>>> master
   add_foreign_key "commentaires", "posts"
   add_foreign_key "commentaires", "users"
   add_foreign_key "likes", "posts"
