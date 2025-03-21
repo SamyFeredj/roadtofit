@@ -124,11 +124,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_21_142214) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-<<<<<<< HEAD
-=======
   add_foreign_key "choix_recettes", "recettes"
   add_foreign_key "choix_recettes", "users"
->>>>>>> master
   add_foreign_key "commentaires", "posts"
   add_foreign_key "commentaires", "users"
   add_foreign_key "likes", "posts"
