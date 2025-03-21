@@ -3,7 +3,7 @@ class Recette < ApplicationRecord
   # has_many :users, through: :choix_recettes
   has_one_attached :photo
 
-  AUTHORIZED_REPAS = ["Petit-déjeuner", "Déjeuner", "Dîner"]
+  AUTHORIZED_REPAS = ["Petit-déjeuner", "Déjeuner", "Dîner", "Dessert"]
   AUTHORIZED_DIFFICULTE = ["Facile", "Moyen", "Difficile"]
 
   validates :lipides, presence: true, numericality: { only_integer: true }
