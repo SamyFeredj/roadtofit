@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :choix_recettes, dependent: :destroy
+  has_many :recettes, through: :choix_recettes
 
   REGIMES_ALIMENTAIRES = ["Végétarien", "Halal", "Vegan"]
   OBJECTIFS_PHYSIQUES = ["Prise de muscle", "Perte de poids", "Maintien"]
