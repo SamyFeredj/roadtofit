@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_21_140124) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_21_142214) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,16 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_21_140124) do
     t.datetime "updated_at", null: false
     t.index ["recette_id"], name: "index_choix_recettes_on_recette_id"
     t.index ["user_id"], name: "index_choix_recettes_on_user_id"
+  end
+
+  create_table "commentaires", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_commentaires_on_post_id"
+    t.index ["user_id"], name: "index_commentaires_on_user_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -116,6 +126,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_21_140124) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "choix_recettes", "recettes"
   add_foreign_key "choix_recettes", "users"
+  add_foreign_key "commentaires", "posts"
+  add_foreign_key "commentaires", "users"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
