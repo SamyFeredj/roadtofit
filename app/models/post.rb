@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
+  has_many :commentaires, dependent: :destroy
 
   validates :user_id, presence: true
   validates :contenu, length: { maximum: 140 }

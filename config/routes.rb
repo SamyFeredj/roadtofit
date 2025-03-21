@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   resources :posts do
     resources :likes, only: [:update]
+    resources :commentaires, only: [:new, :create]
   end
   resources :recettes, only: [:index, :show, :new, :create]
 end

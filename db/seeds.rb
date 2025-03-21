@@ -8,6 +8,7 @@ if Rails.env == "development"
   Recette.destroy_all
   Post.destroy_all
   User.destroy_all
+  Commentaire.destroy_all
 
   puts "OK"
 end
@@ -150,8 +151,27 @@ count = 0
 end
 
 puts " ===== "
+# ===== Commentaires generation
+print "> Commentaire 1..."
+c1 = Commentaire.new(post: p1, user: u2, content: "Bienvenue dans la commu RoadToFit !")
+c1.save!
+puts "OK"
+#
+print "> Commentaire 2..."
+c2 = Commentaire.new(post: p1, user: u3, content: "Et un de plus dans la team, génial !")
+c2.save!
+puts "OK"
+#
+print "> Commentaire 3..."
+c3 = Commentaire.new(post: p2, user: u4, content: "J'avais envie de tester cette recette depuis longtemps. C'est décidé, ce midi je me lance !")
+c3.save!
+puts "OK"
+
+puts " ===== "
+
 # ===== End of generation
 puts "#{User.count} Users generated successfully"
 puts "#{Recette.count} Recettes generated successfully"
 puts "#{Post.count} Posts generated successfully"
 puts "#{Like.count} Likes generated successfully"
+puts "#{Commentaire.count} Commentaires generated successfully"
