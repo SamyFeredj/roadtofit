@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <h1 class="mb-4">Choisir une recette pour aujourd'hui</h1>
+
+  <%= form_with model: @choix_recette, local: true, class: 'row g-3' do |form| %>
+    <div class="col-md-6">
+      <%= form.label :recette_id, "Recette", class: 'form-label' %>
+      <%= form.collection_select :recette_id, @recettes, :id, :nom, { prompt: "Choisis ta recette" }, { class: 'form-select' } %>
+    </div>
+
+    <div class="col-md-6">
+      <%= form.label :date, "Date", class: 'form-label' %>
+      <%= form.date_field :date, value: Date.today, class: 'form-control' %>
+    </div>
+
+    <div class="col-12">
+      <div class="form-check">
+        <%= form.check_box :done, class: 'form-check-input' %>
+        <%= form.label :done, "Déjà réalisée ?", class: 'form-check-label' %>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <%= form.submit "Valider", class: 'btn btn-primary' %>
+      <%= link_to '⬅️ Retour', choix_recettes_path, class: 'btn btn-secondary ms-2' %>
+    </div>
+  <% end %>
+</div>

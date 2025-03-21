@@ -1,6 +1,8 @@
 class Recette < ApplicationRecord
   # has_many :reviews, dependent: :destroy
   # has_many :users, through: :choix_recettes
+  has_many :choix_recettes, dependent: :destroy
+  has_many :users, through: :choix_recettes
   has_one_attached :photo
 
   AUTHORIZED_REPAS = ["Petit-déjeuner", "Déjeuner", "Dîner"]

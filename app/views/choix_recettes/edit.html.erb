@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <h1 class="mb-4">Modifier le statut de la recette</h1>
+
+  <%= form_with model: @choix_recette, local: true, class: 'row g-3' do |form| %>
+    <div class="col-md-6">
+      <label class="form-label"><strong>Recette :</strong></label>
+      <p class="form-control-plaintext"><%= @choix_recette.recette.nom %></p>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label"><strong>Date :</strong></label>
+      <p class="form-control-plaintext"><%= @choix_recette.date.strftime('%d/%m/%Y') %></p>
+    </div>
+
+    <div class="col-12">
+      <div class="form-check">
+        <%= form.check_box :done, class: 'form-check-input' %>
+        <%= form.label :done, "Recette réalisée ?", class: 'form-check-label' %>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <%= form.submit "Mettre à jour", class: 'btn btn-primary' %>
+      <%= link_to '⬅️ Retour', choix_recettes_path, class: 'btn btn-secondary ms-2' %>
+    </div>
+  <% end %>
+</div>
+
