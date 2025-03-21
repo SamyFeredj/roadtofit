@@ -3,8 +3,11 @@
   <div class="post-header">
     <div class="row align-items-center">
       <h3 class="col-10"><%= post.user.prenom.capitalize %> <%= post.user.nom.capitalize %></h3>
-      <%= link_to post_path(post), class: "btn btn-danger col-2", data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer votre post ?"} do %>
-        <strong>X</strong>
+      <%= link_to edit_post_path(post), class: "col-1" do %>
+        <i class="fa-solid fa-pencil"></i>
+      <% end %>
+      <%= link_to post_path(post), class: "col-1", data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer votre post ?"} do %>
+        <i class="fa-solid fa-circle-xmark"></i>
       <% end %>
     </div>
   </div>
