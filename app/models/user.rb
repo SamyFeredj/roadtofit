@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   REGIMES_ALIMENTAIRES = ["Végétarien", "Halal", "Vegan"]
   OBJECTIFS_PHYSIQUES = ["Prise de muscle", "Perte de poids", "Maintien"]
