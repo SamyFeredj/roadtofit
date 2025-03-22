@@ -7,7 +7,11 @@ Rails.application.routes.draw do
     resources :commentaires, only: [:new, :create]
   end
 
-  resources :recettes, only: [:index, :show, :new, :create]
+  resources :recettes, only: [:index, :show, :new, :create] do
+    resources :reviews, only: [:new, :create]
+  end
+
+  resources :reviews, only: [:destroy]
 
   resources :choix_recettes
   # , except: [:show]
