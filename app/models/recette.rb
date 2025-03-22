@@ -21,4 +21,5 @@ class Recette < ApplicationRecord
   validates :temps_de_preparation, presence: true, numericality: { only_integer: true }
   validates :tags, presence: true
   validates :nom, presence: true
+  validates :note_globale, numericality: { less_than_or_equal_to: 5, greather_than_or_equal_to: 1 }, allow_nil: true
 end
