@@ -8,7 +8,6 @@ class Recette < ApplicationRecord
 
   AUTHORIZED_REPAS = ["Petit-déjeuner", "Déjeuner", "Dîner", "Dessert"]
   AUTHORIZED_DIFFICULTE = ["Facile", "Moyen", "Difficile"]
-  AUTHORIZED_NOTES = (1..5)
 
   validates :lipides, presence: true, numericality: { only_integer: true }
   validates :glucides, presence: true, numericality: { only_integer: true }
@@ -22,5 +21,5 @@ class Recette < ApplicationRecord
   validates :temps_de_preparation, presence: true, numericality: { only_integer: true }
   validates :tags, presence: true
   validates :nom, presence: true
-  validates :note_globale, inclusion: { in: AUTHORIZED_NOTES }, allow_nil: true
+  validates :note_globale, numericality: { less_than_or_equal_to: 5, greather_than_or_equal_to: 1 }, allow_nil: true
 end
