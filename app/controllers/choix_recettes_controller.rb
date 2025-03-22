@@ -3,6 +3,8 @@ class ChoixRecettesController < ApplicationController
 
   def index
     @choix_recettes = current_user.choix_recettes.order(date: :desc)
+    @recettes = Recette.where(id: @choix_recettes.pluck(:recette_id))
+    raise if @recettes.count != @choix_recettes.count
   end
 
   def new
@@ -45,4 +47,3 @@ class ChoixRecettesController < ApplicationController
     params.require(:choix_recette).permit(:recette_id, :date, :done)
   end
 end
-

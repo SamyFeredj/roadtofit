@@ -1,0 +1,36 @@
+<div class="container mt-5 mb-5">
+    <h1 class="mb-4">Mes choix de recettes</h1>
+
+    <%= link_to '➕ Ajouter une recette pour aujourd\'hui', new_choix_recette_path, class: 'btn btn-success mb-3' %>
+
+    <table class="table table-striped table-hover">
+      <thead class="table-dark">
+        <tr>
+          <th>Date</th>
+          <th>Recette</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% choix_recettes.each do |choix| %>
+          <tr>
+            <td><%= choix.date.strftime('%d/%m/%Y') %></td>
+            <td><%= choix.recette.nom %></td>
+            <td>
+              <% if choix.done %>
+                <span class="badge bg-success">✅ Réalisée</span>
+              <% else %>
+                <span class="badge bg-warning text-dark">❌ Pas encore</span>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to '✏️ Modifier', edit_choix_recette_path(choix), class: 'btn btn-outline-primary btn-sm' %>
+              <%= link_to '🗑 Supprimer', choix_recette_path(choix), data: { turbo_method: :delete, turbo_confirm: "T'es sûr ?" }, class: 'btn btn-outline-danger btn-sm' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
