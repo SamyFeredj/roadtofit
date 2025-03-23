@@ -1,5 +1,10 @@
 class CommentairesController < ApplicationController
 
+  def index
+    @commentaires = Commentaire.all
+    @commentaire = Commentaire.new
+  end
+
   def new
     @commentaire = Commentaire.new
   end
@@ -13,6 +18,12 @@ class CommentairesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @commentaire = Commentaire.find(params[:id])
+    @commentaire.destroy
+    redirect_to post_commentaires_path(@commentaire), status: :see_other
   end
 
   private

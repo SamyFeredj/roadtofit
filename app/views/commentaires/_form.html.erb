@@ -1,0 +1,17 @@
+<% if commentaire.errors.any? %>
+  <div class="alert alert-danger">
+    <%= commentaire.errors.full_messages.to_sentence %>
+  </div>
+<% end %>
+
+<% post = Post.find(params[:post_id]) %>
+<%= simple_form_for([post, @commentaire]) do |f| %>
+  <div class="row">
+    <%= f.text_area :content %>
+  </div>
+  <div class="row d-flex justify-content-end">
+    <div class="col-3 p-0 mt-3">
+      <%= f.submit "Poster", class: "btn btn-primary mb-4" %>
+    </div>
+  </div>
+<% end %>

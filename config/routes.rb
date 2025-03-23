@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :likes, only: [:update]
-    resources :commentaires, only: [:new, :create]
+    resources :commentaires, only: [:index, :new, :create, :destroy]
   end
 
   resources :recettes, only: [:index, :show, :new, :create] do
