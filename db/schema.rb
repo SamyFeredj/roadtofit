@@ -63,17 +63,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_22_153050) do
     t.index ["user_id"], name: "index_commentaires_on_user_id"
   end
 
-  create_table "ingredients", force: :cascade do |t|
-    t.string "name"
-    t.integer "calories_per_quantity"
-    t.integer "proteines"
-    t.integer "glucides"
-    t.integer "lipides"
-    t.string "quantity_for_calories"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "likes", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "user_id", null: false
