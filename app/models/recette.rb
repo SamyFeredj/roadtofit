@@ -3,6 +3,7 @@ class Recette < ApplicationRecord
   # has_many :users, through: :choix_recettes
   has_many :choix_recettes, dependent: :destroy
   has_many :users, through: :choix_recettes
+  has_many :reviews, dependent: :destroy
   has_one_attached :photo
 
   AUTHORIZED_REPAS = ["Petit-déjeuner", "Déjeuner", "Dîner", "Dessert"]
@@ -20,4 +21,5 @@ class Recette < ApplicationRecord
   validates :temps_de_preparation, presence: true, numericality: { only_integer: true }
   validates :tags, presence: true
   validates :nom, presence: true
+  validates :note_globale, numericality: { less_than_or_equal_to: 5, greather_than_or_equal_to: 1 }, allow_nil: true
 end
