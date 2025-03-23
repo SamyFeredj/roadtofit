@@ -1,0 +1,16 @@
+<%= simple_form_for [recette, review] do |f| %>
+  <div class="row">
+    <%= f.label :commentaire, "Commentaire" %>
+  </div>
+  <div class="row p-2">
+    <%= f.text_area :commentaire %>
+  </div>
+  <div class="row">
+    <%= f.input :note, label: 'Évaluation globale', collection: Review::AUTHORIZED_RATINGS, include_blank: false %>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <%= f.submit "Ajouter un avis", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

@@ -10,6 +10,8 @@ class RecettesController < ApplicationController
 
   def show
     @recette = Recette.find(params[:id])
+    @reviews = Review.where(recette: @recette)
+    @review = Review.new
   end
 
   def new

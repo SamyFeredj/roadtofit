@@ -24,4 +24,20 @@
       <p>Instructions: <%= @recette.instructions %></p>
     </div>
   </div>
+
+  <div class="row">
+    <h3>Avis des Fitos</h3>
+  </div>
+  <div class="row">
+    <%= render "reviews/new_review", recette: @recette, user: current_user, review: @review%>
+  </div>
+  <div class="row">
+    <ul>
+      <% @reviews.reverse.each do |review| %>
+        <li class="my-3" style="background-color:#dadada; padding:10px;">
+          <%= render "reviews/review_content", review: review %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>

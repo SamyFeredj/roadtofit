@@ -2,7 +2,7 @@ require 'json'
 require 'open-uri'
 
 # Cleaning database
-if Rails.env == "development"
+if Rails.env == "development" || Rails.env == "production"
   print "> Cleaning database..."
 
   Recette.destroy_all
@@ -168,6 +168,23 @@ c3.save!
 puts "OK"
 
 puts " ===== "
+# ===== Reviews generation
+print "> Review 1..."
+r1 = Review.new(user: u1, recette: recette1, note: 5, commentaire: "Recette très simple à réaliser et délicieuse !")
+r1.save!
+puts "OK"
+#
+print "> Review 2..."
+r2 = Review.new(user: u2, recette: recette1, note: 4, commentaire: "J'ai adoré, mais j'ai trouvé que c'était un peu trop salé.")
+r2.save!
+puts "OK"
+#
+print "> Review 3..."
+r3 = Review.new(user: u3, recette: recette1, note: 5, commentaire: "Recette parfaite, je la referai sans hésiter !")
+r3.save!
+puts "OK"
+
+puts " ===== "
 
 # ===== End of generation
 puts "#{User.count} Users generated successfully"
@@ -175,3 +192,4 @@ puts "#{Recette.count} Recettes generated successfully"
 puts "#{Post.count} Posts generated successfully"
 puts "#{Like.count} Likes generated successfully"
 puts "#{Commentaire.count} Commentaires generated successfully"
+puts "#{Review.count} Reviews generated successfully"

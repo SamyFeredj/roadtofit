@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_03_21_142214) do
+ActiveRecord::Schema[7.1].define(version: 2025_03_22_153050) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,6 +63,17 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_21_142214) do
     t.index ["user_id"], name: "index_commentaires_on_user_id"
   end
 
+  create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.integer "calories_per_quantity"
+    t.integer "proteines"
+    t.integer "glucides"
+    t.integer "lipides"
+    t.string "quantity_for_calories"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "likes", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "user_id", null: false
@@ -98,6 +109,18 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_21_142214) do
     t.datetime "updated_at", null: false
     t.string "nom"
     t.integer "temps_de_preparation"
+    t.float "note_globale"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "recette_id", null: false
+    t.bigint "user_id", null: false
+    t.string "commentaire"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "note"
+    t.index ["recette_id"], name: "index_reviews_on_recette_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -131,4 +154,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_03_21_142214) do
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "reviews", "recettes"
+  add_foreign_key "reviews", "users"
 end
