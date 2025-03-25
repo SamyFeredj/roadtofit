@@ -1,13 +1,12 @@
 <div class="border rounded p-3">
-  <% post.commentaires.each do |commentaire| %>
-    <ul class="list-group">
-      <li class="list-group-item"><%= commentaire.content %>
+  <ul class="list-group">
+    <li class="list-group-item" id="commentaire_<%= commentaire.id %>">
+      <%= commentaire.content %>
       <% if commentaire.user == current_user %>
-        <%= link_to post_commentaire_path(post_id: post.id, id: commentaire.id), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr?"} do %>
+        <%= link_to post_commentaire_path(post_id: post.id, id: commentaire.id), method: :delete, data: { action: "click->comment#deleteComment", comment_id: commentaire.id, post_id: post.id } do %>
           <i class="fa-solid fa-trash"></i>
         <% end %>
       <% end %>
-      </li>
-    </ul>
-  <% end %>
+    </li>
+  </ul>
 </div>

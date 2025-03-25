@@ -4,7 +4,7 @@
   </div>
 <% end %>
 
-<%= simple_form_for([post, commentaire]) do |f| %>
+<%= simple_form_for([post, commentaire], html: { id: "new_comment_#{post.id}", remote: true }) do |f| %>
   <div class="row">
     <%= f.text_area :content %>
   </div>

@@ -20,21 +20,33 @@
         <p><i class="fa-solid fa-heart"></i></p>
       <% end %>
     <% end %>
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#commentModal_<%= post.id %>">
-      <i class="fa-solid fa-comment"></i>
-    </button>
-</div>
-        <!-- Modal -->
-<div class="modal fade" id="commentModal_<%= post.id %>" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="commentModalLabel">Votre commentaire</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
-      </div>
-      <div class="modal-body">
-        <%= render "commentaires/commentaire", post: post %>
-        <%= render "commentaires/form", commentaire: Commentaire.new, post: post %>
+  <!-- Bouton pour afficher la modal des commentaires -->
+  <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#commentModal_<%= post.id %>">
+    <i class="fa-solid fa-comment"></i> Commentaires
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="commentModal_<%= post.id %>" tabindex="-1" aria-labelledby="commentModalLabel_<%= post.id %>" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" data-controller="comment">
+        <div class="modal-header">
+          <h5 class="modal-title" id="commentModalLabel_<%= post.id %>">Ajouter un commentaire</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Liste des commentaires -->
+        <div data-target="comment.commentList" id="comments_<%= post.id %>">
+          <%= render partial: "commentaires/commentaire", collection: post.commentaires, as: :commentaire, locals: { post: post } %>
+        </div>
+
+
+          <!-- Formulaire d'ajout de commentaire -->
+          <%= simple_form_for([post, Commentaire.new], html: { data: { action: "submit->comment#addComment" } }) do |f| %>
+            <%= f.text_area :content, placeholder: "Ajouter un commentaire", data: { target: "comment.contentInput" } %>
+            <%= f.submit "Poster", class: "btn btn-primary mt-3" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
