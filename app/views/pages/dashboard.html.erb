@@ -1,12 +1,5 @@
 <div class="container">
-  <div class="carousel mt-5">
-    <h3>INSERER ICI LE CAROUSEL</h3>
-    <ul class="list-group list-group-flush">
-      <% @best_recettes.each do |recette| %>
-        <li class="list-group-item"><%= recette.nom %></li>
-      <% end %>
-    </ul>
-  </div>
+  <%= render "recettes/best_recettes_carousel", recettes: @best_recettes %>
 
   <%= render "choix_recettes/user_choix_today", choix_recettes: @choix_recettes %>
 
