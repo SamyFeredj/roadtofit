@@ -20,7 +20,22 @@
         <p><i class="fa-solid fa-heart"></i></p>
       <% end %>
     <% end %>
-  <%= link_to post_commentaires_path(post) do %>
-    <i class="fa-solid fa-comment"></i>
-  <% end %>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#commentModal_<%= post.id %>">
+      <i class="fa-solid fa-comment"></i>
+    </button>
+</div>
+        <!-- Modal -->
+<div class="modal fade" id="commentModal_<%= post.id %>" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="commentModalLabel">Votre commentaire</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" ></button>
+      </div>
+      <div class="modal-body">
+        <%= render "commentaires/commentaire", post: post %>
+        <%= render "commentaires/form", commentaire: Commentaire.new, post: post %>
+      </div>
+    </div>
+  </div>
 </div>

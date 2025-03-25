@@ -1,8 +1,10 @@
 class CommentairesController < ApplicationController
 
   def index
-    @commentaires = Commentaire.all
-    @commentaire = Commentaire.new
+    @post = Post.find(params[:post_id]) # Trouver le post correspondant
+    @commentaire = Commentaire.new # Initialiser un nouveau commentaire
+    @commentaires = @post.commentaires # Récupérer les commentaires associés au post
+    render partial: "commentaires/commentaire", locals: { post: @post } # Rendre les commentaires dans la modal
   end
 
   def new
