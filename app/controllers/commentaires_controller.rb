@@ -28,9 +28,11 @@ class CommentairesController < ApplicationController
 
   def destroy
     @commentaire = Commentaire.find(params[:id])
+    @commentaire.post = Post.find(params[:post_id])
     @commentaire.destroy
 
     respond_to do |format|
+      # Ici, tu renvoies une réponse Turbo Stream qui supprime le commentaire du DOM
       format.turbo_stream { render turbo_stream: turbo_stream.remove("commentaire_#{@commentaire.id}") }
       format.json { head :no_content }
       format.html { redirect_to post_path(@commentaire.post), notice: "Commentaire supprimé." }

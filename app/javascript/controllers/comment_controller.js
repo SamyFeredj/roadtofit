@@ -43,8 +43,26 @@ export default class extends Controller {
     })
 
     if (response.ok) {
-      // Si la suppression réussit, retire le commentaire du DOM
-      document.getElementById(`comment_${commentId}`).remove();
+
+      const commentaireElement = document.getElementById(`commentaire_${commentId}`);
+      if (commentaireElement) {
+        // Supprimer le <li> du commentaire
+        commentaireElement.remove();
+
+        // Vérifier si le parent <ul> devient vide
+        const ulElement = commentaireElement.closest('ul');
+        if (ulElement && ulElement.children.length === 0) {
+          // Supprimer le <ul> si vide
+          ulElement.remove();
+
+          // Vérifier si la <div> parent de <ul> devient vide
+          const divElement = ulElement.closest('.border.rounded.p-3');
+          if (divElement && divElement.querySelectorAll('ul').length === 0) {
+            // Supprimer la <div> si vide
+            divElement.remove();
+          }
+        }
+      }
     } else {
       alert("Erreur lors de la suppression du commentaire");
     }

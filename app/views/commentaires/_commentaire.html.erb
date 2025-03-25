@@ -3,7 +3,7 @@
     <li class="list-group-item" id="commentaire_<%= commentaire.id %>">
       <%= commentaire.content %>
       <% if commentaire.user == current_user %>
-        <%= link_to post_commentaire_path(post_id: post.id, id: commentaire.id), method: :delete, data: { action: "click->comment#deleteComment", comment_id: commentaire.id, post_id: post.id } do %>
+        <%= button_to post_commentaire_path(post_id: post.id, id: commentaire.id), method: :delete, data: { action: "click->comment#deleteComment", comment_id: commentaire.id, post_id: post.id } do %>
           <i class="fa-solid fa-trash"></i>
         <% end %>
       <% end %>
