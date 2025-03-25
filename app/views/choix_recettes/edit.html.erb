@@ -1,28 +1,21 @@
-<div class="container mt-5">
-  <h1 class="mb-4">Modifier le statut de la recette</h1>
+<div class="container mt-5 mb-5">
+  <h1 class="mb-4 text-center" style="color: #1E3932;">Modifier le repas</h1>
 
-  <%= form_with model: @choix_recette, local: true, class: 'row g-3' do |form| %>
-    <div class="col-md-6">
-      <label class="form-label"><strong>Recette :</strong></label>
-      <p class="form-control-plaintext"><%= @choix_recette.recette.nom %></p>
-    </div>
+  <div class="card shadow-sm p-4" style="background-color: #FFFFFF; border-left: 5px solid #A3CB38;">
+    <h5 class="mb-3" style="color: #1E3932;"><strong>Recette :</strong> <%= @choix_recette.recette.nom %></h5>
+    <p class="mb-3" style="color: #2e4239;"><strong>Date :</strong> <%= @choix_recette.date.strftime('%A %d %B %Y') %></p>
 
-    <div class="col-md-6">
-      <label class="form-label"><strong>Date :</strong></label>
-      <p class="form-control-plaintext"><%= @choix_recette.date.strftime('%d/%m/%Y') %></p>
-    </div>
-
-    <div class="col-12">
-      <div class="form-check">
+    <%= form_with model: @choix_recette, local: true do |form| %>
+      <div class="form-check mb-4">
         <%= form.check_box :done, class: 'form-check-input' %>
-        <%= form.label :done, "Recette réalisée ?", class: 'form-check-label' %>
+        <%= form.label :done, "Recette réalisée ?", class: 'form-check-label', style: "color: #1E3932;" %>
       </div>
-    </div>
 
-    <div class="col-12">
-      <%= form.submit "Mettre à jour", class: 'btn btn-primary' %>
-      <%= link_to '⬅️ Retour', choix_recettes_path, class: 'btn btn-secondary ms-2' %>
-    </div>
-  <% end %>
+      <div class="d-flex justify-content-between mt-4">
+        <%= link_to '⬅️ Retour', choix_recettes_path, class: 'btn btn-supprimer-dark' %>
+        <%= form.submit "Mettre à jour ✅", class: 'btn btn-valider-light' %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
