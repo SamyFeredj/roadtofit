@@ -22,7 +22,7 @@
           <p><i class="fa-solid fa-heart"></i></p>
         <% end %>
       <% end %>
-      <%= link_to post_commentaires_path(post), data: { turbo_frame: 'modal' } do %>
+      <%= link_to post_commentaires_path(post), data: { turbo_frame: 'modal', controller: 'modal' } do %>
         <i class="fa-solid fa-comment p-1"></i>
       <% end %>
     </div>
