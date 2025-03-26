@@ -14,14 +14,16 @@
   <%= image_tag post.image_url, width: 200 if post.image_url.present? %>
     <p><%= post.contenu %></p>
     <% like = Like.where(post_id: post.id, user_id: current_user.id).first %>
-    <%= link_to post_like_path(post, like), data: {turbo_method: :patch} do %>
-      <% if like.like_flag == 0 %>
-        <p><i class="fa-regular fa-heart"></i></p>
-      <% else %>
-        <p><i class="fa-solid fa-heart"></i></p>
+    <div class="d-flex">
+      <%= link_to post_like_path(post, like), data: {turbo_method: :patch} do %>
+        <% if like.like_flag == 0 %>
+          <p><i class="fa-regular fa-heart p-1"></i></p>
+        <% else %>
+          <p><i class="fa-solid fa-heart"></i></p>
+        <% end %>
       <% end %>
-    <% end %>
-  <%= link_to post_commentaires_path(post) do %>
-    <i class="fa-solid fa-comment"></i>
-  <% end %>
+      <%= link_to post_commentaires_path(post) do %>
+        <i class="fa-solid fa-comment p-1"></i>
+      <% end %>
+    </div>
 </div>
