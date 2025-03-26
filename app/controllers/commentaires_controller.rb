@@ -1,10 +1,8 @@
 class CommentairesController < ApplicationController
 
   def index
-    @post = Post.find(params[:post_id]) # Trouver le post correspondant
-    @commentaire = Commentaire.new # Initialiser un nouveau commentaire
-    @commentaires = @post.commentaires # Récupérer les commentaires associés au post
-    render partial: "commentaires/commentaire", locals: { post: @post } # Rendre les commentaires dans la modal
+    @commentaires = Commentaire.all
+    @commentaire = Commentaire.new
   end
 
   def new
@@ -16,11 +14,7 @@ class CommentairesController < ApplicationController
     @commentaire.post = Post.find(params[:post_id])
     @commentaire.user = current_user
     if @commentaire.save
-      # Si la création du commentaire réussit, rendre une réponse Turbo Stream
-      respond_to do |format|
-        format.turbo_stream { render turbo_stream: turbo_stream.append("comments_#{@commentaire.post.id}", target: "comment_list", partial: "commentaires/commentaire", locals: { commentaire: @commentaire, post: @commentaire.post }) }
-        format.html { redirect_to post_path(@commentaire.post), notice: "Commentaire ajouté." }
-      end
+      redirect_to post_commentaires_path(@commentaire.post)
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,15 +22,8 @@ class CommentairesController < ApplicationController
 
   def destroy
     @commentaire = Commentaire.find(params[:id])
-    @commentaire.post = Post.find(params[:post_id])
     @commentaire.destroy
-
-    respond_to do |format|
-      # Ici, tu renvoies une réponse Turbo Stream qui supprime le commentaire du DOM
-      format.turbo_stream { render turbo_stream: turbo_stream.remove("commentaire_#{@commentaire.id}") }
-      format.json { head :no_content }
-      format.html { redirect_to post_path(@commentaire.post), notice: "Commentaire supprimé." }
-    end
+    redirect_to post_commentaires_path(@commentaire.post), status: :see_other
   end
 
   private

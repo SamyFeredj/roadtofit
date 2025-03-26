@@ -5,28 +5,10 @@
         Commentaires
       </h1>
       <% post = Post.find(params[:post_id]) %>
-      <%= link_to "Nouveau commentaire",
-            new_post_commentaire_path(post),
-            class: "btn btn-primary",
-            data: { bs_toggle: "modal", bs_target: "#commentModal" } %>
-    </div>
-        <!-- Modal -->
-      <div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="commentModalLabel">Votre commentaire</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <%= render "form", commentaire: @commentaire %>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="commentaires" class="d-flex flex-column gap-3">
-      <%= render "commentaire" %>
+      <%= turbo_frame_tag "modal" do %>
+        <%= render "commentaire" %>
+        <%= render "form", commentaire: @commentaire %>
+      <% end %>
     </div>
   </div>
 </div>

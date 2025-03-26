@@ -1,5 +1,0 @@
-<%= turbo_stream.append "comments_#{post.id}", target: "comment_list" do %>
-  <div id="comment_<%= commentaire.id %>">
-    <%= render "commentaires/commentaire", commentaire: commentaire, post: post %>
-  </div>
-<% end %>
