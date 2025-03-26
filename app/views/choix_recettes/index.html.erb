@@ -1,8 +1,28 @@
-<div class="container">
-  <h3>Historique</h3>
-  <ul>
-    <% @choix_recettes.each_with_index do |choix, index| %>
-      <li><%= @recettes[index].nom %> - <%= choix.created_at.strftime('%d %m, %Y') %></li>
-    <% end %>
-  </ul>
+<div class="container-fluid p-3" style="background-color: #FFFACD; min-height: 100vh;">
+  <h1 class="mb-4" style="color: #1E3932;">Historique de mes repas</h1>
+
+  <% @choix_par_jour.each do |date, choix_du_jour| %>
+    <div class="mb-4">
+      <h4 class="mb-3" style="color: #A3CB38;">
+        <%= l(date, format: "%A %d %B") %>
+      </h4>
+
+      <% choix_du_jour.each do |choix| %>
+        <div class="card mb-2 shadow-sm" style="border-left: 5px solid #A3CB38;">
+          <div class="card-body" style="background-color: #FFFFFF;">
+            <h5 class="card-title mb-1" style="color: #1E3932;"><%= choix.recette.nom %></h5>
+
+            <p class="card-text mb-0" style="color: #2e4239;">
+              Statut :
+              <% if choix.done? %>
+                ✅ Réalisée
+              <% else %>
+                ❌ Non réalisée
+              <% end %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>

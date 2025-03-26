@@ -2,11 +2,14 @@
   <ul class="list-group">
     <li class="list-group-item" id="commentaire_<%= commentaire.id %>">
       <%= commentaire.content %>
+      <% post = Post.find(params[:post_id]) %>
       <% if commentaire.user == current_user %>
-        <%= button_to post_commentaire_path(post_id: post.id, id: commentaire.id), method: :delete, data: { action: "click->comment#deleteComment", comment_id: commentaire.id, post_id: post.id } do %>
+        <%= button_to post_commentaire_path(post, commentaire), method: :delete, data: { action: "click->comment#deleteComment", comment_id: commentaire.id, post_id: post.id } do %>
           <i class="fa-solid fa-trash"></i>
         <% end %>
       <% end %>
     </li>
   </ul>
 </div>
+
+        <%= link_to post_commentaire_path(post, commentaire), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr?"} do %>
