@@ -1,34 +1,28 @@
-<div class="container-fluid p-3" style="background-color: #E8F5E9; min-height: 100vh;">
-  <h1 class="mb-4" style="color: #1E3932;">Mes repas</h1>
+<div class="container-fluid p-3" style="background-color: #FFFACD; min-height: 100vh;">
+  <h1 class="mb-4" style="color: #1E3932;">Historique de mes repas</h1>
 
   <% @choix_par_jour.each do |date, choix_du_jour| %>
     <div class="mb-4">
       <h4 class="mb-3" style="color: #A3CB38;">
-        <%= date == Date.today ? "Aujourd’hui" : l(date, format: "%A %d %B") %>
+        <%= l(date, format: "%A %d %B") %>
       </h4>
 
       <% choix_du_jour.each do |choix| %>
         <div class="card mb-2 shadow-sm" style="border-left: 5px solid #A3CB38;">
           <div class="card-body" style="background-color: #FFFFFF;">
             <h5 class="card-title mb-1" style="color: #1E3932;"><%= choix.recette.nom %></h5>
-            <p class="card-text mb-2" style="color: #2e4239;">
-              <%= choix.done ? "✅ Réalisée" : "⏳ À faire" %>
+
+            <p class="card-text mb-0" style="color: #2e4239;">
+              Statut :
+              <% if choix.done? %>
+                ✅ Réalisée
+              <% else %>
+                ❌ Non réalisée
+              <% end %>
             </p>
-            <div class="d-flex justify-content-between">
-              <%= link_to '✏️ Modifier', edit_choix_recette_path(choix), class: 'btn btn-valider-light btn-sm' %>
-              <%= button_to '🗑 Supprimer', choix_recette_path(choix), method: :delete, data: { confirm: "T'es sûr ?" }, class: 'btn btn-supprimer-dark btn-sm' %>
-            </div>
           </div>
         </div>
       <% end %>
     </div>
   <% end %>
-
-  <!-- Bouton Ajouter en bas -->
-  <div class="d-flex justify-content-center mt-5 mb-5">
-    <%= link_to "➕ Ajouter un repas", new_choix_recette_path, class: "btn btn-valider-light" %>
-  </div>
-
-  <!-- Bouton Accueil en bas à gauche -->
-  <%= link_to '🏠 Accueil', root_path, class: 'btn position-fixed bottom-0 start-0 m-3', style: 'background-color: #1E3932; color: white;' %>
 </div>
