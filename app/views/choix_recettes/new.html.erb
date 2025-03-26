@@ -1,27 +1,31 @@
-<div class="container mt-5">
-  <h1 class="mb-4">Choisir une recette pour aujourd'hui</h1>
+<div class="container mt-5 mb-5">
+  <h1 class="mb-4 text-center" style="color: #1E3932;">Ajouter un repas</h1>
 
-  <%= form_with model: @choix_recette, local: true, class: 'row g-3' do |form| %>
-    <div class="col-md-6">
-      <%= form.label :recette_id, "Recette", class: 'form-label' %>
-      <%= form.collection_select :recette_id, @recettes, :id, :nom, { prompt: "Choisis ta recette" }, { class: 'form-select' } %>
+  <%= form_with model: @choix_recette, local: true, class: 'row g-4' do |form| %>
+    <!-- Sélection de la recette -->
+    <div class="col-12">
+      <%= form.label :recette_id, "Choisis une recette", class: 'form-label', style: "color: #1E3932;" %>
+      <%= form.collection_select :recette_id, @recettes, :id, :nom, { prompt: "Sélectionne ta recette" }, { class: 'form-select', style: "background-color: #FFFACD;" } %>
     </div>
 
-    <div class="col-md-6">
-      <%= form.label :date, "Date", class: 'form-label' %>
-      <%= form.date_field :date, value: Date.today, class: 'form-control' %>
+    <!-- Date du repas -->
+    <div class="col-12">
+      <%= form.label :date, "Date du repas", class: 'form-label', style: "color: #1E3932;" %>
+      <%= form.date_field :date, value: Date.today, class: 'form-control', style: "background-color: #E8F5E9;" %>
     </div>
 
+    <!-- Case réalisée -->
     <div class="col-12">
       <div class="form-check">
         <%= form.check_box :done, class: 'form-check-input' %>
-        <%= form.label :done, "Déjà réalisée ?", class: 'form-check-label' %>
+        <%= form.label :done, "Recette déjà réalisée ?", class: 'form-check-label', style: "color: #1E3932;" %>
       </div>
     </div>
 
-    <div class="col-12">
-      <%= form.submit "Valider", class: 'btn btn-primary' %>
-      <%= link_to '⬅️ Retour', choix_recettes_path, class: 'btn btn-secondary ms-2' %>
+    <!-- Boutons -->
+    <div class="col-12 d-flex justify-content-between mt-4">
+      <%= link_to '⬅️ Retour', choix_recettes_path, class: 'btn btn-supprimer-dark' %>
+      <%= form.submit "Valider ✅", class: 'btn btn-valider-light' %>
     </div>
   <% end %>
 </div>
