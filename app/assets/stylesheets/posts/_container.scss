@@ -10,31 +10,13 @@
   }
 }
 
-.new-post-container {
+.post-container {
   padding: 10px 15px 15px;
   border-radius: 10px;
   background-color: $color-dark-green;
 
-  .new-post-header {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    gap: 10px;
-    margin-bottom: 10px;
-  }
-
-  .new-post-username {
-    font-size: 14px;
-    margin: 0;
-    font-weight: bold;
-    color: $color-bg;
-  }
-
-  .inserer-image {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: $color-light-blue;
+  &:not(:first-child) {
+    margin: 10px 0px;
   }
 
   .new-post-textarea {
@@ -47,19 +29,61 @@
     color: $color-dark-green;
     border-radius: 10px;
     border: none;
-  }
 
-  .new-post-buttons {
-    display: flex;
-    width: 100%;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 10px;
-
-    .new-post-icon {
-      background: transparent;
-      border: none;
+    &:focus {
+      outline: none;
       box-shadow: none;
     }
+
+    &::placeholder {
+      color: gray;
+      font-weight: bold;
+    }
   }
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.post-username {
+  font-size: 14px;
+  margin: 0;
+  font-weight: bold;
+  color: $color-bg;
+}
+
+.inserer-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: $color-light-blue;
+}
+
+.post-buttons {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+
+  .new-post-icon {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+.post-contenu {
+  background-color: $color-bg;
+  padding: 10px 15px;
+  border-radius: 10px;
+  color: $color-dark-green;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px 0px;
 }
