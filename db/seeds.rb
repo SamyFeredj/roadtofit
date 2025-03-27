@@ -132,8 +132,28 @@ p1.save!
 puts "OK"
 #
 print "> Post 2..."
-p2 = Post.new(contenu: "Je viens de tester la recette de chirashi au saumon et avocat, c'était délicieux !", user: u1, total_likes: 0)
+p2 = Post.new(contenu: "Je viens de tester la recette de chirashi au saumon et avocat, c'était délicieux ! Preuve à l'appuie", user: u2, total_likes: 0, image_url: "chirashi.jpg")
 p2.save!
+puts "OK"
+#
+print "> Post 3..."
+p3 = Post.new(contenu: "Hello les Fitos ! Est-ce que quelqu'un aurait une idée de recette full prot' pour ce soir ?", user: u3, total_likes: 0)
+p3.save!
+puts "OK"
+#
+print "> Post 4..."
+p4 = Post.new(contenu: "Je veux pas me la ramener, mais regardez la masterclass que je viens de faire en suivant la recette des Brownies", user: u4, total_likes: 0, image_url: "brownies.jpg")
+p4.save!
+puts "OK"
+#
+print "> Post 5..."
+p5 = Post.new(contenu: "Combien de cheat meals vous vous autorisez par semaine ?", user: u3, total_likes: 0)
+p5.save!
+puts "OK"
+#
+print "> Post 6..."
+p6 = Post.new(contenu: "Une recette vegan validée par la commu à faire en moins de 30 min svp ?", user: u4, total_likes: 0)
+p6.save!
 puts "OK"
 #
 
@@ -141,7 +161,7 @@ puts " ===== "
 # ===== Likes generation
 count = 0
 [u1, u2, u3, u4].each_with_index do |user, u_index|
-  [p1, p2].each_with_index do |post, p_index|
+  [p1, p2, p3, p4, p5, p6].each_with_index do |post, p_index|
     count += 1
     print "Like n°#{count} : user#{u_index + 1} | post#{p_index + 1}..."
     like_i = Like.new(user: user, post: post, like_flag: 0)
@@ -165,6 +185,16 @@ puts "OK"
 print "> Commentaire 3..."
 c3 = Commentaire.new(post: p2, user: u4, content: "J'avais envie de tester cette recette depuis longtemps. C'est décidé, ce midi je me lance !")
 c3.save!
+puts "OK"
+#
+print "> Commentaire 4..."
+c4 = Commentaire.new(post: p4, user: u2, content: "Ça a l'air delicieux (même si tu te la racontes un peu quand même haha) !")
+c4.save!
+puts "OK"
+#
+print "> Commentaire 5..."
+c5 = Commentaire.new(post: p5, user: u4, content: "Ça varie pas mal d'une semaine à l'autre, mais j'essaye de me limiter à 3")
+c5.save!
 puts "OK"
 
 # TODO : si on ajoute un jour la table ingredients

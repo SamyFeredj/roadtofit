@@ -2,10 +2,14 @@ class ChoixRecettesController < ApplicationController
   before_action :set_choix_recette, only: [:edit, :update, :destroy]
 
   def index
-    @choix_recettes = current_user.choix_recettes.order(date: :desc)
-    @recettes = Recette.where(id: @choix_recettes.pluck(:recette_id))
-    raise if @recettes.count != @choix_recettes.count
+    choix_historiques = current_user.choix_recettes
+      .where("date < ?", Date.today)
+      .order(date: :asc)
+      .includes(:recette)
+
+    @choix_par_jour = choix_historiques.group_by(&:date)
   end
+
 
   def new
     @choix_recette = ChoixRecette.new
@@ -15,11 +19,13 @@ class ChoixRecettesController < ApplicationController
   def create
     @choix_recette = current_user.choix_recettes.build(choix_recette_params)
     if @choix_recette.save
-      redirect_to choix_recettes_path, notice: "Recette choisie avec succès !"
+      redirect_to dashboard_path, notice: "Recette ajoutée avec succès !"
     else
+      @recettes = Recette.all  # ✅ Ajoute cette ligne ici
       render :new, status: :unprocessable_entity
     end
   end
+
 
   def edit
   end

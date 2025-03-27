@@ -4,7 +4,7 @@
     <ul class="list-group">
       <li class="list-group-item"><%= commentaire.content %>
       <% if commentaire.user == current_user %>
-        <%= link_to post_commentaire_path(post_id: post.id, id: commentaire.id), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr?"} do %>
+        <%= link_to post_commentaire_path(post, commentaire), data: {turbo_method: :delete, turbo_confirm: "Êtes-vous sûr?"} do %>
           <i class="fa-solid fa-trash"></i>
         <% end %>
       <% end %>
