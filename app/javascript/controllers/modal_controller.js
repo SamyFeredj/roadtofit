@@ -14,7 +14,6 @@ export default class extends Controller {
   }
 
   close() {
-    // Retirer la modal
     this.modalTarget.remove()
   }
 }

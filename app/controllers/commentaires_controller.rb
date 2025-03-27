@@ -3,6 +3,7 @@ class CommentairesController < ApplicationController
   def index
     @commentaires = Commentaire.all
     @commentaire = Commentaire.new
+    @post = Post.find(params[:post_id])
   end
 
   def new

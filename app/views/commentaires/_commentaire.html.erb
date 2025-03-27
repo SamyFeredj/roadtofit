@@ -1,5 +1,4 @@
 <div class="border rounded p-3">
-  <% post = Post.find(params[:post_id]) %>
   <% post.commentaires.each do |commentaire| %>
     <ul class="list-group">
       <li class="list-group-item"><%= commentaire.content %>

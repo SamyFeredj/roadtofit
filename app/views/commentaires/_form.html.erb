@@ -4,7 +4,6 @@
   </div>
 <% end %>
 
-<% post = Post.find(params[:post_id]) %>
 <%= simple_form_for([post, @commentaire]) do |f| %>
   <div class="row">
     <%= f.text_area :content %>
