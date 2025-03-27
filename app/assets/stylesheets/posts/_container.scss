@@ -2,10 +2,18 @@
   height: 100%;
   background-color: $color-bg;
   padding: 0px 35px;
+
+  #whassup {
+    font-weight: bolder;
+    color: $color-dark-green;
+    margin: 1rem 0rem;
+  }
 }
 
 .new-post-container {
-  padding: 5px;
+  padding: 10px 15px 15px;
+  border-radius: 10px;
+  background-color: $color-dark-green;
 
   .new-post-header {
     display: flex;
@@ -18,36 +26,40 @@
   .new-post-username {
     font-size: 14px;
     margin: 0;
-    font-weight: 700;
+    font-weight: bold;
+    color: $color-bg;
   }
 
   .inserer-image {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: black;
+    background-color: $color-light-blue;
   }
 
-  form {
-    margin: 0 !important;
-    background-color: red;
-
-    .new-post-textarea {
-      width: 100%;
-      margin: 0;
-      z-index: 9 !important;
-    }
-
-    .form-content {
-      position: relative;
-    }
-  }
-
-  .new-post-icon {
-    background: transparent;
+  .new-post-textarea {
+    width: 100%;
+    padding: 20px;
+    margin: 0;
+    background-color: $color-bg !important;
+    font-size: 14px;
+    font-weight: bold;
+    color: $color-dark-green;
+    border-radius: 10px;
     border: none;
-    box-shadow: none;
-    position: absolute;
-    z-index: 10;
+  }
+
+  .new-post-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+
+    .new-post-icon {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
   }
 }

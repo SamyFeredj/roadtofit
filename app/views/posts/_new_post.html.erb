@@ -1,4 +1,11 @@
-<div class="new-post-container container p-3 my-3 bg-white">
-  <%# TODO : retirer container %>
+<div class="new-post-container">
+  <div class="new-post-header">
+    <div class="inserer-image">
+      <%# TODO %>
+    </div>
+    <p class="new-post-username">
+      <%= current_user.prenom.capitalize %> <%= current_user.nom.capitalize %>
+    </p>
+  </div>
   <%= render "post_form", post: post %>
 </div>

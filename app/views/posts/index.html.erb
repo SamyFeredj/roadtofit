@@ -1,5 +1,5 @@
 <div class="posts-container">
-  <%# TODO : à remplacer par une classe perso et non pas bootstrap %>
+  <h1 id="whassup">Quoi de neuf ?</h1>
   <%= render "new_post", post: @post %>
   <% @posts.reverse.each do |post| %>
     <%= render "post", post: post %>
