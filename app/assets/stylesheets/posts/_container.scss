@@ -1,0 +1,89 @@
+.posts-container {
+  height: 100%;
+  background-color: $color-bg;
+  padding: 0px 35px;
+
+  #whassup {
+    font-weight: bolder;
+    color: $color-dark-green;
+    margin: 1rem 0rem;
+  }
+}
+
+.post-container {
+  padding: 10px 15px 15px;
+  border-radius: 10px;
+  background-color: $color-dark-green;
+
+  &:not(:first-child) {
+    margin: 10px 0px;
+  }
+
+  .new-post-textarea {
+    width: 100%;
+    padding: 20px;
+    margin: 0;
+    background-color: $color-bg !important;
+    font-size: 14px;
+    font-weight: bold;
+    color: $color-dark-green;
+    border-radius: 10px;
+    border: none;
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    &::placeholder {
+      color: gray;
+      font-weight: bold;
+    }
+  }
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.post-username {
+  font-size: 14px;
+  margin: 0;
+  font-weight: bold;
+  color: $color-bg;
+}
+
+.inserer-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: $color-light-blue;
+}
+
+.post-buttons {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+
+  .new-post-icon {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+.post-contenu {
+  background-color: $color-bg;
+  padding: 10px 15px;
+  border-radius: 10px;
+  color: $color-dark-green;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px 0px;
+}
