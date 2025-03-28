@@ -1,29 +1,40 @@
-<div class="post-container container bg-white p-3 my-3">
-  <%# TODO : retirer container %>
+<div class="post-container">
+
   <div class="post-header">
-    <div class="row align-items-center">
-      <h3 class="col-10"><%= post.user.prenom.capitalize %> <%= post.user.nom.capitalize %></h3>
+    <div class="inserer-image">
+      <%# TODO %>
+    </div>
+    <p class="post-username">
+      <%= post.user.prenom.capitalize %> <%= post.user.nom.capitalize %>
+    </p>
+
+    <%# TODO : retirer la condition false et ajouter un drop down %>
+    <% if false %>
       <%= link_to edit_post_path(post), class: "col-1" do %>
         <i class="fa-solid fa-pencil"></i>
       <% end %>
       <%= link_to post_path(post), class: "col-1", data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr de vouloir supprimer votre post ?"} do %>
         <i class="fa-solid fa-circle-xmark"></i>
       <% end %>
-    </div>
+    <% end %>
   </div>
-  <%= image_tag post.image_url, width: 200 if post.image_url.present? %>
-    <p><%= post.contenu %></p>
-    <% like = Like.where(post_id: post.id, user_id: current_user.id).first %>
-    <div class="d-flex">
-      <%= link_to post_like_path(post, like), data: {turbo_method: :patch} do %>
-        <% if like.like_flag == 0 %>
-          <p><i class="fa-regular fa-heart p-1"></i></p>
-        <% else %>
-          <p><i class="fa-solid fa-heart"></i></p>
-        <% end %>
+
+  <%= image_tag post.image_url, style: "width: 100%" if post.image_url.present? %>
+  <p class="post-contenu"><%= post.contenu %></p>
+  <% like = Like.where(post_id: post.id, user_id: current_user.id).first %>
+  <div class="post-buttons">
+    <%= link_to post_like_path(post, like), data: {turbo_method: :patch} do %>
+      <% if like.like_flag == 0 %>
+        <svg width="24" height="21" viewBox="0 0 30 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13.2305 24.9245L13.084 24.7897L2.81836 15.2565C1.01953 13.5866 0 11.2429 0 8.78779V8.59443C0 4.46943 2.92969 0.930371 6.98438 0.156934C9.29297 -0.288379 11.6543 0.244824 13.5352 1.56904C14.0625 1.94404 14.5547 2.37764 15 2.87568C15.2461 2.59443 15.5098 2.33662 15.791 2.09639C16.0078 1.90889 16.2305 1.73311 16.4648 1.56904C18.3457 0.244824 20.707 -0.288379 23.0156 0.151074C27.0703 0.924512 30 4.46943 30 8.59443V8.78779C30 11.2429 28.9805 13.5866 27.1816 15.2565L16.916 24.7897L16.7695 24.9245C16.2891 25.3698 15.6562 25.6218 15 25.6218C14.3438 25.6218 13.7109 25.3757 13.2305 24.9245ZM14.0098 5.98701C13.9863 5.96943 13.9688 5.946 13.9512 5.92256L12.9082 4.75068L12.9023 4.74482C11.5488 3.22725 9.50391 2.53584 7.51172 2.9167C4.78125 3.43818 2.8125 5.81709 2.8125 8.59443V8.78779C2.8125 10.4577 3.50977 12.0573 4.73438 13.194L15 22.7272L25.2656 13.194C26.4902 12.0573 27.1875 10.4577 27.1875 8.78779V8.59443C27.1875 5.82295 25.2188 3.43818 22.4941 2.9167C20.502 2.53584 18.4512 3.23311 17.1035 4.74482C17.1035 4.74482 17.1035 4.74482 17.0977 4.75068C17.0918 4.75654 17.0977 4.75068 17.0918 4.75654L16.0488 5.92842C16.0312 5.95186 16.0078 5.96943 15.9902 5.99287C15.7266 6.25654 15.3691 6.40303 15 6.40303C14.6309 6.40303 14.2734 6.25654 14.0098 5.99287V5.98701Z" fill="#FFFACD"/>
+        </svg>
+      <% else %>
+        <p><i class="fa-solid fa-heart"></i></p>
       <% end %>
       <%= link_to post_commentaires_path(post), data: { turbo_frame: 'modal', controller: 'modal' } do %>
-        <i class="fa-solid fa-comment p-1"></i>
-      <% end %>
-    </div>
+      <svg width="25" height="22" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 13.0625C30 19.7949 23.2852 25.25 15 25.25C12.8262 25.25 10.7637 24.875 8.90042 24.2012C8.20315 24.7109 7.06643 25.4082 5.71878 25.9941C4.31253 26.6035 2.61917 27.125 0.937529 27.125C0.556669 27.125 0.216826 26.8965 0.0703411 26.5449C-0.0761432 26.1934 0.00588798 25.7949 0.26956 25.5254L0.287138 25.5078C0.304716 25.4902 0.328154 25.4668 0.36331 25.4258C0.427763 25.3555 0.527372 25.2441 0.650419 25.0918C0.890654 24.7988 1.21292 24.3652 1.54104 23.8262C2.12698 22.8535 2.68362 21.5762 2.79495 20.1406C1.03714 18.1484 2.86192e-05 15.7051 2.86192e-05 13.0625C2.86192e-05 6.33008 6.71487 0.875 15 0.875C23.2852 0.875 30 6.33008 30 13.0625Z" fill="#FFFACD"/>
+      </svg>
+    <% end %>
+  </div>
 </div>
