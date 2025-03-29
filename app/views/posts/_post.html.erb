@@ -32,10 +32,34 @@
         <p><i class="fa-solid fa-heart"></i></p>
       <% end %>
     <% end %>
-      <%= link_to post_commentaires_path(post), data: { turbo_frame: 'modal', controller: 'modal' } do %>
-      <svg width="25" height="22" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <%#= link_to post_commentaires_path(post), data: { turbo_frame: 'modal', controller: 'modal' } do %>
+      <%# <svg width="25" height="22" viewBox="0 0 30 28" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M30 13.0625C30 19.7949 23.2852 25.25 15 25.25C12.8262 25.25 10.7637 24.875 8.90042 24.2012C8.20315 24.7109 7.06643 25.4082 5.71878 25.9941C4.31253 26.6035 2.61917 27.125 0.937529 27.125C0.556669 27.125 0.216826 26.8965 0.0703411 26.5449C-0.0761432 26.1934 0.00588798 25.7949 0.26956 25.5254L0.287138 25.5078C0.304716 25.4902 0.328154 25.4668 0.36331 25.4258C0.427763 25.3555 0.527372 25.2441 0.650419 25.0918C0.890654 24.7988 1.21292 24.3652 1.54104 23.8262C2.12698 22.8535 2.68362 21.5762 2.79495 20.1406C1.03714 18.1484 2.86192e-05 15.7051 2.86192e-05 13.0625C2.86192e-05 6.33008 6.71487 0.875 15 0.875C23.2852 0.875 30 6.33008 30 13.0625Z" fill="#FFFACD"/>
-      </svg>
-    <% end %>
+      </svg> %>
+    <%# end %>
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom_<%= post.id %>" aria-controls="offcanvasBottom">Toggle bottom offcanvas</button>
+
+    <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom_<%= post.id %>" aria-labelledby="offcanvasBottomLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasBottomLabel">Commentaires</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body small">
+      <%= turbo_frame_tag "commentaires_#{post.id}" do %>
+        <%= render "commentaires/commentaire", post: post %>
+      <% end %>
+      <%= simple_form_for([post, @commentaire]) do |f| %>
+        <div class="row">
+          <%= f.text_area :content %>
+        </div>
+        <div class="row d-flex justify-content-end">
+          <div class="col-3 p-0 mt-3">
+            <%= f.submit "Poster", class: "btn btn-primary mb-4" %>
+          </div>
+        </div>
+      <% end %>
+        <%#= render "commentaires/form", commentaire: @commentaire, post: post %>
+    </div>
+  </div>
   </div>
 </div>
