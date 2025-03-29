@@ -1,0 +1,14 @@
+.dashboard-container {
+  padding: 35px;
+  //TODO :  background-color: $color-bg;
+
+  .recette-slide {
+    img {
+      background: linear-gradient(
+        0deg,
+        rgba(0, 255, 0, 0.5) 0%,
+        rgba(0, 0, 0, 1) 100%
+      );
+    }
+  }
+}
