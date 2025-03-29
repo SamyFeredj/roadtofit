@@ -1,9 +1,7 @@
 <div class="post-container">
 
   <div class="post-header">
-    <div class="inserer-image">
-      <%# TODO %>
-    </div>
+    <%= cl_image_tag post.user.photo.key, class: "profile-picture" %>
     <p class="post-username">
       <%= post.user.prenom.capitalize %> <%= post.user.nom.capitalize %>
     </p>
