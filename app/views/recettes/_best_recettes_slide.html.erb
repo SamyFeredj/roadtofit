@@ -1,6 +1,3 @@
-<%= link_to recette_path(recette), class: "recette-slide" do %>
-  <%= cl_image_tag recette.photo.key, class: "d-block w-100" %>
-  <div class="carousel-caption">
-    <h5><%= recette.nom %></h5>
-  </div>
+<%= link_to recette_path(recette), class: "roadtofit-slide" do %>
+  <%= cl_image_tag recette.photo.key %>
 <% end %>
