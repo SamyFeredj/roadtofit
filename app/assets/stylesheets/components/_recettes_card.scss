@@ -1,10 +1,60 @@
+.recettes-container {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .recettes-card {
+  width: 80%;
   padding-bottom: 20px;
+  padding-top: 60px;
+  margin-bottom: 60px;
+  height: 200px;
+  background-color: $color-second-green;
+  text-align: center;
+  border-radius: 4px;
+  position: relative;
 }
 
 .recettes-img {
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
+  width: 170px;
+  height: 170px;
   object-position: center;
+}
+
+h4 {
+  margin-top: 80px;
+  width: 200px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h4 a {
+  color: $color-dark-green;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.recettes-icons {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  top: 95px;
+  left: -25px;
+  color: $color-dark-green;
+  gap: 5px;
+}
+.recettes-icons svg {
+  fill: $color-dark-green;
 }
