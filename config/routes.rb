@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   get "dashboard", to: "pages#dashboard", as: :dashboard
+  get "profile", to: "pages#profile", as: :profile
 
   resources :posts do
     resources :likes, only: [:update]

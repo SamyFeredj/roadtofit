@@ -1,0 +1,25 @@
+.profile-container {
+  padding: 35px;
+  background-color: $color-bg;
+
+  .profile-greeting {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 20px;
+
+    h3 {
+      font-weight: 700;
+      letter-spacing: normal;
+      color: $color-dark-green;
+      font-size: 24px;
+    }
+
+    h1 {
+      font-weight: 900;
+      letter-spacing: normal;
+      color: $color-dark-green;
+      font-size: 48px;
+    }
+  }
+}

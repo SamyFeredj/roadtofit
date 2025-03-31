@@ -1,4 +1,18 @@
 .dashboard-container {
   padding: 35px;
   background-color: $color-bg;
+
+
+  h1 {
+    color: $color-dark-green;
+    font-weight: 800;
+  }
+
+  .parcourir-recettes {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0px;
+  }
 }
