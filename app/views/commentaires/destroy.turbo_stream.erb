@@ -1,0 +1,4 @@
+<%= turbo_stream.replace(
+  "commentaires_#{@post.id}",
+  partial: "posts/commentaire_list", post: @post
+) %>
