@@ -1,0 +1,35 @@
+.roadtofit-carousel {
+  height: 300px;
+  width: 300px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0px 10px;
+
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 24px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  transition: all ease 0.5s;
+}
+
+.roadtofit-slide {
+  flex-shrink: 0;
+  display: block;
+
+  width: 90%;
+  height: var(--height);
+
+  user-select: none;
+  scroll-snap-align: center;
+
+  img {
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    width: 100%;
+    aspect-ratio: 1;
+  }
+}
