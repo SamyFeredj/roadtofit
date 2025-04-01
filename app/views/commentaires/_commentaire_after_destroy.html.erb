@@ -1,9 +1,7 @@
 <div class="commentaires-container">
   <% @post.commentaires.each do |commentaire| %>
     <div class="commentaire-header">
-      <div class="inserer-image">
-      <%# TODO %>
-      </div>
+      <%= cl_image_tag commentaire.user.photo.key, class: "profile-picture" %>
       <p class="commentaire-username">
         <%= commentaire.user.prenom.capitalize %> <%= commentaire.user.nom.capitalize %>
       </p>
