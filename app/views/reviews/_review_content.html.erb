@@ -7,10 +7,13 @@
     <p><%= review.commentaire %></p>
   </div>
   <div class="rating">
-    <% Review::AUTHORIZED_RATINGS.each do |number| %>
-      <i class="fa<%= (number > review.note) ? 'r' : 's' %> fa-star"></i>
-    <% end %>
+    <p>
+      <% Review::AUTHORIZED_RATINGS.each do |number| %>
+        <i class="fa<%= (number > review.note) ? 'r' : 's' %> fa-star"></i>
+      <% end %>
+    </p>
   </div>
+
   <% if current_user == review.user %>
     <%= link_to review_path(review), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr ?" } do %>
       <svg width="24" height="21" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
