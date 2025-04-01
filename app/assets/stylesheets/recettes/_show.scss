@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  color: $color-dark-green
 }
 
 .container-show svg {
@@ -12,7 +13,7 @@
 }
 
 .container-show h2, h5 {
-  color: $color-dark-green;
+  text-align: center;
 }
 
 .show-img img {
@@ -46,40 +47,52 @@
 
 .show-attributes {
   width: 100%;
-  padding-top: 10px;
   margin-bottom: 30px;
   background-color: $color-second-green;
   display: flex;
   justify-content: space-evenly;
   align-items: flex-start;
-  color: $color-dark-green;
 }
 .show-attribute {
   width: 100px;
   height: 80px;
+  padding-top: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
+.show-attribute p {
+  padding-top: 4px;
+}
 
 .show-ingredients {
+  width: 100%;
+  padding: 15px 15px 0px 15px;
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+}
+.show-ingredients p {
+  width: 130px;
+  padding: 0px 10px 0px 10px;
+}
+.show-ingredients-suite {
   width: 100%;
   padding: 15px;
   display: flex;
   justify-content: space-evenly;
-  align-items: center;
-  color: $color-dark-green;
   text-align: center;
 }
+.show-ingredients-suite p {
+  width: 130px;
+  padding: 0px 10px 0px 10px;
+}
+
 
 .show-instructions {
-  color: $color-dark-green;
   padding: 10px;
-}
-.show-instructions h6 {
-  color: $color-second-green
 }
 
 .show-calories {
@@ -101,4 +114,56 @@
   justify-content: space-between;
   align-items: flex-start;
   padding: 15px 25px 0px 25px;
+}
+
+.show-avis {
+  background-color: $color-light-blue;
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 40px;
+}
+
+.show-avis textarea {
+  border-radius: 24px;
+  width: 100%;
+  background-color: $color-light-blue;
+  border: 1px solid gray;
+  outline: none;
+  box-shadow: none;
+  padding: 15px 10px 0px 22px ;
+}
+
+.show-avis textarea:focus {
+  border: 1px solid gray;
+  box-shadow: none;
+  outline: none;
+}
+
+.show-avis-header {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 20px;
+  gap: 10px;
+  position: relative;
+}
+
+.show-avis-username {
+  font-size: 14px;
+  margin: 0;
+  font-weight: bold;
+  color: $color-dark-green;
+  position: absolute;
+  left: 90px;
+  top: 20px;
+  padding-top: 5px;
+}
+
+.show-avis-content {
+  padding-top: 32px;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

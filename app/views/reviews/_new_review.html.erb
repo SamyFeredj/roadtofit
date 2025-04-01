@@ -3,14 +3,14 @@
     <%= f.label :commentaire, "Commentaire" %>
   </div>
   <div class="row p-2">
-    <%= f.text_area :commentaire %>
+    <%= f.text_area :commentaire, placeholder: "Ajoutez un commentaire" %>
   </div>
   <div class="row">
-    <%= f.input :note, label: 'Évaluation globale', collection: Review::AUTHORIZED_RATINGS, include_blank: false %>
+    <%= f.input :note, label: 'Note', collection: Review::AUTHORIZED_RATINGS, include_blank: false %>
   </div>
   <div class="row">
-    <div class="col-3">
-      <%= f.submit "Ajouter un avis", class: "btn btn-primary" %>
+    <div class="d-flex justify-content-end">
+      <%= f.submit "Valider", class: "btn-valider-dark" %>
     </div>
   </div>
 <% end %>

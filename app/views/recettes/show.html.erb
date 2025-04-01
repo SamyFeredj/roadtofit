@@ -59,11 +59,21 @@
   </div>
   <h5>Ingrédients</h5>
   <div class="show-ingredients">
-    <p><%= @recette.ingredients %></p>
+    <% @recette.ingredients.split(',').first(3).each do |ingredient| %>
+      <p><%= ingredient %></p>
+    <% end %>
+  </div>
+  <div class="show-ingredients-suite">
+    <% @recette.ingredients.split(',').drop(3).each do |ingredient| %>
+      <p><%= ingredient %></p>
+      <br>
+    <% end %>
   </div>
   <h5>Instructions</h5>
   <div class="show-instructions">
-    <p><%= @recette.instructions %></p>
+    <% @recette.instructions.split(/\r?\n/).each do |instruction| %>
+      <p><%= instruction %></p>
+    <% end %>
   </div>
   <div class="show-calories">
     <h5>Valeurs nutritionnelles</h5>
@@ -81,41 +91,24 @@
     </div>
   </div>
 
-
-  </div>
-  <div class="row">
-    <div class="col-6">
-      <h5>Valeurs Nutritionnelles</h5>
-      <ul>
-        <li>Calories: <%= @recette.calories %></li>
-        <li>Lipides: <%= @recette.lipides %>g </li>
-        <li>Glucides: <%= @recette.glucides %>g </li>
-        <li>Protéines: <%= @recette.proteines %>g</li>
-      </ul>
-      <p>Temps de préparation: <%= @recette.temps_de_preparation %>min</p>
-      <p>Niveau de difficulté: <%= @recette.difficulte %></p>
-      <p>Ingrédients: <%= @recette.ingredients %></p>
-      <p>Tips: <%= @recette.tips %></p>
-      <p>Tags: <%= @recette.tags %></p>
-    </div>
-    <div class="col-6">
-      <p>Instructions: <%= @recette.instructions %></p>
-    </div>
-  </div>
-
-  <div class="row">
-    <h3>Avis des Fitos</h3>
-  </div>
-  <div class="row">
+  <div class="show-avis">
+    <h5>Laissez votre avis</h5>
     <%= render "reviews/new_review", recette: @recette, user: current_user, review: @review%>
   </div>
-  <div class="row">
-    <ul>
-      <% @reviews.reverse.each do |review| %>
-        <li class="my-3" style="background-color:#dadada; padding:10px;">
-          <%= render "reviews/review_content", review: review %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+  <h5>Les avis des Fitos</h5>
+  <% @reviews.reverse.each do |review| %>
+    <%= render "reviews/review_content", review: review %>
+  <% end %>
 </div>
+
+
+
+        <%# <li class="my-3" style="padding:10px;"> %>
+          <%#= render "reviews/review_content", review: review %>
+        <%# </li> %>
+      <%# end %>
+    <%# </ul> %>
+
+
+  <%# <p>Tips: = @recette.tips</p> %>
+  <%# <p>Tags: = @recette.tags</p> %>
