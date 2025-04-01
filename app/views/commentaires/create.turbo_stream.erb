@@ -1,4 +1,4 @@
-<%= turbo_stream.replace(
+<%= turbo_stream.append(
   "commentaires_#{@post.id}",
-  partial: "posts/commentaire_list", post: @post
+  partial: "posts/commentaire_after_create", post: @post
 ) %>

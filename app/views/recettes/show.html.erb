@@ -1,43 +1,114 @@
-<div class="container">
-  <div class="row mt-3">
-    <div class="col text-center">
-      <%= image_tag url_for(@recette.photo), style: "width:300px;height:300px;object-size:cover;object-position:center;" %>
-      <h2><%= @recette.nom %></h2>
+<div class="container-show">
+  <div class="show-img">
+    <%= image_tag url_for(@recette.photo) %>
+  </div>
+  <h2><%= @recette.nom %></h2>
+  <div class="show-icons">
+    <% like = Like.where(user_id: current_user.id).first %>
+    <%= link_to "#", data: {turbo_method: :patch} do %>
+      <% if like.like_flag == 0 %>
+        <svg width="24" height="21" viewBox="0 0 30 26" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13.2305 24.9245L13.084 24.7897L2.81836 15.2565C1.01953 13.5866 0 11.2429 0 8.78779V8.59443C0 4.46943 2.92969 0.930371 6.98438 0.156934C9.29297 -0.288379 11.6543 0.244824 13.5352 1.56904C14.0625 1.94404 14.5547 2.37764 15 2.87568C15.2461 2.59443 15.5098 2.33662 15.791 2.09639C16.0078 1.90889 16.2305 1.73311 16.4648 1.56904C18.3457 0.244824 20.707 -0.288379 23.0156 0.151074C27.0703 0.924512 30 4.46943 30 8.59443V8.78779C30 11.2429 28.9805 13.5866 27.1816 15.2565L16.916 24.7897L16.7695 24.9245C16.2891 25.3698 15.6562 25.6218 15 25.6218C14.3438 25.6218 13.7109 25.3757 13.2305 24.9245ZM14.0098 5.98701C13.9863 5.96943 13.9688 5.946 13.9512 5.92256L12.9082 4.75068L12.9023 4.74482C11.5488 3.22725 9.50391 2.53584 7.51172 2.9167C4.78125 3.43818 2.8125 5.81709 2.8125 8.59443V8.78779C2.8125 10.4577 3.50977 12.0573 4.73438 13.194L15 22.7272L25.2656 13.194C26.4902 12.0573 27.1875 10.4577 27.1875 8.78779V8.59443C27.1875 5.82295 25.2188 3.43818 22.4941 2.9167C20.502 2.53584 18.4512 3.23311 17.1035 4.74482C17.1035 4.74482 17.1035 4.74482 17.0977 4.75068C17.0918 4.75654 17.0977 4.75068 17.0918 4.75654L16.0488 5.92842C16.0312 5.95186 16.0078 5.96943 15.9902 5.99287C15.7266 6.25654 15.3691 6.40303 15 6.40303C14.6309 6.40303 14.2734 6.25654 14.0098 5.99287V5.98701Z"/>
+        </svg>
+      <% else %>
+        <p><i class="fa-solid fa-heart"></i></p>
+      <% end %>
+    <% end %>
+    <%= link_to "#" do %>
+      <svg width="24" height="21" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 144L48 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l144 0 0 144c0 17.7 14.3 32 32 32s32-14.3 32-32l0-144 144 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-144 0 0-144z"/>
+      </svg>
+    <% end %>
+  </div>
+  <div class="show-rating">
+    <svg width="24" height="21" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+    </svg>
+    <svg width="24" height="21" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+    </svg>
+    <svg width="24" height="21" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+    </svg>
+    <svg width="24" height="21" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+      <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"/>
+    </svg>
+    <svg width="24" height="21" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+      <path d="M288 376.4l.1-.1 26.4 14.1 85.2 45.5-16.5-97.6-4.8-28.7 20.7-20.5 70.1-69.3-96.1-14.2-29.3-4.3-12.9-26.6L288.1 86.9l-.1 .3 0 289.2zm175.1 98.3c2 12-3 24.2-12.9 31.3s-23 8-33.8 2.3L288.1 439.8 159.8 508.3C149 514 135.9 513.1 126 506s-14.9-19.3-12.9-31.3L137.8 329 33.6 225.9c-8.6-8.5-11.7-21.2-7.9-32.7s13.7-19.9 25.7-21.7L195 150.3 259.4 18c5.4-11 16.5-18 28.8-18s23.4 7 28.8 18l64.3 132.3 143.6 21.2c12 1.8 22 10.2 25.7 21.7s.7 24.2-7.9 32.7L438.5 329l24.6 145.7z"/>
+    </svg>
+  </div>
+  <div class="show-attributes">
+    <div class="show-attribute">
+      <svg width="24" height="21" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120l0 136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2 280 120c0-13.3-10.7-24-24-24s-24 10.7-24 24z"/>
+      </svg>
+      <p><%= @recette.temps_de_preparation %> min</p>
+    </div>
+    <div class="show-attribute">
+      <svg width="24" height="21" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+        <path d="M576 0c17.7 0 32 14.3 32 32l0 448c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-448c0-17.7 14.3-32 32-32zM448 96c17.7 0 32 14.3 32 32l0 352c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-352c0-17.7 14.3-32 32-32zM352 224l0 256c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32s32 14.3 32 32zM192 288c17.7 0 32 14.3 32 32l0 160c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-160c0-17.7 14.3-32 32-32zM96 416l0 64c0 17.7-14.3 32-32 32s-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32s32 14.3 32 32z"/>
+      </svg>
+      <p><%= @recette.difficulte %></p>
+    </div>
+    <div class="show-attribute">
+      <svg width="24" height="21" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path d="M505 41c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0L383 95c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l88-88zM305.5 27.3c-6.2-6.2-16.4-6.2-22.6 0L271.5 38.6c-37.5 37.5-37.5 98.3 0 135.8l10.4 10.4-30.5 30.5c-3.4-27.3-15.5-53.8-36.5-74.8l-11.3-11.3c-6.2-6.2-16.4-6.2-22.6 0l-11.3 11.3c-37.5 37.5-37.5 98.3 0 135.8l10.4 10.4-30.5 30.5c-3.4-27.3-15.5-53.8-36.5-74.8L101.8 231c-6.2-6.2-16.4-6.2-22.6 0L67.9 242.3c-37.5 37.5-37.5 98.3 0 135.8l10.4 10.4L9.4 457.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l68.9-68.9 12.2 12.2c37.5 37.5 98.3 37.5 135.8 0l11.3-11.3c6.2-6.2 6.2-16.4 0-22.6l-11.3-11.3c-21.8-21.8-49.6-34.1-78.1-36.9l31.9-31.9 12.2 12.2c37.5 37.5 98.3 37.5 135.8 0l11.3-11.3c6.2-6.2 6.2-16.4 0-22.6l-11.3-11.3c-21.8-21.8-49.6-34.1-78.1-36.9l31.9-31.9 12.2 12.2c37.5 37.5 98.3 37.5 135.8 0L486.5 231c6.2-6.2 6.2-16.4 0-22.6L475.2 197c-5.2-5.2-10.6-9.8-16.4-13.9L505 137c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-59.4 59.4c-20.6-4.4-42-3.7-62.3 2.1c6.1-21.3 6.6-43.8 1.4-65.3L409 41c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0L329.1 52.9c-3.7-5-7.8-9.8-12.4-14.3L305.5 27.3z"/>
+      </svg>
+      <p><%= @recette.calories %> cal</p>
     </div>
   </div>
-  <div class="row">
-    <div class="col-6">
-      <h5>Valeurs Nutritionnelles</h5>
-      <ul>
-        <li>Calories: <%= @recette.calories %></li>
-        <li>Lipides: <%= @recette.lipides %>g </li>
-        <li>Glucides: <%= @recette.glucides %>g </li>
-        <li>Protéines: <%= @recette.proteines %>g</li>
-      </ul>
-      <p>Temps de préparation: <%= @recette.temps_de_preparation %>min</p>
-      <p>Niveau de difficulté: <%= @recette.difficulte %></p>
-      <p>Ingrédients: <%= @recette.ingredients %></p>
-      <p>Tips: <%= @recette.tips %></p>
-      <p>Tags: <%= @recette.tags %></p>
+  <h5>Ingrédients</h5>
+  <div class="show-ingredients">
+    <% @recette.ingredients.split(',').first(3).each do |ingredient| %>
+      <p><%= ingredient %></p>
+    <% end %>
+  </div>
+  <div class="show-ingredients-suite">
+    <% @recette.ingredients.split(',').drop(3).each do |ingredient| %>
+      <p><%= ingredient %></p>
+      <br>
+    <% end %>
+  </div>
+  <h5>Instructions</h5>
+  <div class="show-instructions">
+    <% @recette.instructions.split(/\r?\n/).each do |instruction| %>
+      <p><%= instruction %></p>
+    <% end %>
+  </div>
+  <div class="show-calories">
+    <h5>Valeurs nutritionnelles</h5>
+    <div class="show-calories-details">
+      <p>Lipides</p>
+      <p><%= @recette.lipides %>g</p>
     </div>
-    <div class="col-6">
-      <p>Instructions: <%= @recette.instructions %></p>
+    <div class="show-calories-details">
+      <p>Glucides</p>
+      <p><%= @recette.glucides %>g</p>
+    </div>
+    <div class="show-calories-details-last">
+      <p>Protéines</p>
+      <p><%= @recette.proteines %>g</p>
     </div>
   </div>
 
-  <div class="row">
-    <h3>Avis des Fitos</h3>
-  </div>
-  <div class="row">
+  <div class="show-avis">
+    <h5>Laissez votre avis</h5>
     <%= render "reviews/new_review", recette: @recette, user: current_user, review: @review%>
   </div>
-  <div class="row">
-    <ul>
-      <% @reviews.reverse.each do |review| %>
-        <li class="my-3" style="background-color:#dadada; padding:10px;">
-          <%= render "reviews/review_content", review: review %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
+  <h5>Les avis des Fitos</h5>
+  <% @reviews.reverse.each do |review| %>
+    <%= render "reviews/review_content", review: review %>
+  <% end %>
 </div>
+
+
+
+        <%# <li class="my-3" style="padding:10px;"> %>
+          <%#= render "reviews/review_content", review: review %>
+        <%# </li> %>
+      <%# end %>
+    <%# </ul> %>
+
+
+  <%# <p>Tips: = @recette.tips</p> %>
+  <%# <p>Tags: = @recette.tags</p> %>
