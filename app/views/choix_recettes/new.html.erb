@@ -8,6 +8,8 @@
       <%= form.collection_select :recette_id, @recettes, :id, :nom, { prompt: "Sélectionne ta recette" }, { class: 'form-select', style: "background-color: #FFFACD;" } %>
     </div>
 
+    <%= form.hidden_field :recette_id, value: params[:recette_id] %>
+
     <!-- Date du repas -->
     <div class="col-12">
       <%= form.label :date, "Date du repas", class: 'form-label', style: "color: #1E3932;" %>

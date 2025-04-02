@@ -14,6 +14,10 @@ class ChoixRecettesController < ApplicationController
   def new
     @choix_recette = ChoixRecette.new
     @recettes = Recette.all
+
+    if params[:recette_id]
+      @choix_recette.recette_id = params[:recette_id]
+    end
   end
 
   def create
