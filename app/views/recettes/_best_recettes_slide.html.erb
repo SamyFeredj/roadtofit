@@ -1,3 +1,6 @@
 <%= link_to recette_path(recette), class: "roadtofit-slide" do %>
   <%= cl_image_tag recette.photo.key %>
+  <div class="carousel-recette-title">
+    <h3><%= recette.nom %></h3>
+  </div>
 <% end %>
