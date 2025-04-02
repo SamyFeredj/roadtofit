@@ -1,5 +1,15 @@
-.form-control {
+.search-bar input {
   border-radius: 30px;
   background-color: $color-light-blue;
+  box-shadow: none;
+  outline: none;
   margin-bottom: 60px;
+  position: sticky;
+  padding: 10px;
+}
+.search-bar input:focus {
+  border: none;
+  box-shadow: none;
+  outline: none;
+  background-color: $color-light-blue;
 }

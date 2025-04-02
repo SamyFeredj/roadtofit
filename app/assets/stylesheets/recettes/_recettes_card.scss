@@ -1,3 +1,14 @@
+.container-header {
+  background-color: $color-bg;
+  padding: 0px 35px;
+
+  #whassup {
+    font-weight: 800;
+    color: $color-dark-green;
+    margin: 1rem 0rem;
+  }
+}
+
 .recettes-container {
   height: 100%;
   margin: 0;
@@ -50,8 +61,8 @@ h4 a {
   width: 100%;
   justify-content: flex-end;
   align-items: center;
-  top: 95px;
-  left: -25px;
+  top: 84px;
+  left: -38px;
   color: $color-dark-green;
   gap: 5px;
 }
