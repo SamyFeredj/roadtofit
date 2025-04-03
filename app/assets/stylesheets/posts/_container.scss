@@ -105,4 +105,89 @@
   top: 8%;
   transform: translateX(66%);
   transition: all 0.3s ease-out;
+
+  svg {
+    transition: all 0.3 ease-out;
+  }
+}
+
+.playRotateLeft {
+   animation: rotateToLeft 0.4s ease-out;
+}
+
+.playRotateRight {
+  animation: rotateToRight 0.4s ease-out;
+}
+
+
+@keyframes rotateToLeft {
+  0% {
+    transform: rotate(10deg);
+  }
+  10% {
+    transform: rotate(30deg);
+  }
+  20% {
+    transform: rotate(60deg);
+  }
+  30% {
+    transform: rotate(90deg);
+  }
+  40% {
+    transform: rotate(120deg);
+  }
+  50% {
+    transform: rotate(150deg);
+  }
+  60% {
+    transform: rotate(160deg);
+  }
+  70% {
+    transform: rotate(170deg);
+  }
+  80% {
+    transform: rotate(175deg);
+  }
+  90% {
+    transform: rotate(178deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes rotateToRight {
+  0% {
+    transform: rotate(180deg);
+  }
+  10% {
+    transform: rotate(170deg);
+  }
+  20% {
+    transform: rotate(140deg);
+  }
+  30% {
+    transform: rotate(120deg);
+  }
+  40% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(60deg);
+  }
+  60% {
+    transform: rotate(40deg);
+  }
+  70% {
+    transform: rotate(30deg);
+  }
+  80% {
+    transform: rotate(20deg);
+  }
+  90% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
 }
