@@ -8,15 +8,14 @@
             placeholder: "Rechercher une recette",
             autocomplete: "off",
             id: "search-input",
-            onkeypress: "clickPress(event)",
             autofocus: true %>
     <% end %>
   </div>
-  <div class="recettes-filtre">
-    <%= link_to "Petit-déjeuner", recettes_path(repas_de_la_journee: "Petit-déjeuner"), class: "repas" %>
-    <%= link_to "Déjeuner", recettes_path(repas_de_la_journee: "Déjeuner"), class: "repas" %>
-    <%= link_to "Dîner", recettes_path(repas_de_la_journee: "Dîner"), class: "repas" %>
-    <%= link_to "Dessert", recettes_path(repas_de_la_journee: "Dessert"), class: "repas" %>
+  <div class="recettes-filtre" data-controller="boutton-repas">
+    <%= link_to "Petit-déjeuner", recettes_path(repas_de_la_journee: "Petit-déjeuner"), class: "repas", data: { action: "click->boutton-repas#changepetitdej" }, "data-boutton-repas-target"=>"petit" %>
+    <%= link_to "Déjeuner", recettes_path(repas_de_la_journee: "Déjeuner"), class: "repas", data: { action: "click->boutton-repas#changedej" }, "data-boutton-repas-target"=>"dej" %>
+    <%= link_to "Dîner", recettes_path(repas_de_la_journee: "Dîner"), class: "repas", data: { action: "click->boutton-repas#changediner" }, "data-boutton-repas-target"=>"diner" %>
+    <%= link_to "Dessert", recettes_path(repas_de_la_journee: "Dessert"), class: "repas", data: { action: "click->boutton-repas#changedessert" }, "data-boutton-repas-target"=>"dessert" %>
   </div>
   <% @recettes.each do |recette| %>
     <div class="recettes-card">
