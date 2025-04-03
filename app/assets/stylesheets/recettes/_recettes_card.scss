@@ -1,17 +1,34 @@
-.container-header {
-  background-color: $color-bg;
-  padding: 0px 35px;
-
-  #whassup {
+#whassup {
     font-weight: 800;
     color: $color-dark-green;
-    margin: 1rem 0rem;
-  }
+    margin: 20px 0px 0px 0px;
+    padding: 0px 35px 10px 0px;
+}
+
+.recettes-filtre {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  margin-bottom: 70px;
+}
+.repas {
+  text-decoration: none;
+  color: $color-bg;
+  background-color: $color-dark-green;
+  border-radius: 14px;
+  padding: 8px;
+  margin: 5px;
+}
+.active {
+  background-color: yellow; /* Change la couleur du bouton quand il est actif */
+  color: $color-dark-green; /* Assure-toi que le texte reste visible sur le fond jaune */
 }
 
 .recettes-container {
   height: 100%;
   margin: 0;
+  background-color: $color-bg;
   display: flex;
   justify-content: center;
   align-items: center;

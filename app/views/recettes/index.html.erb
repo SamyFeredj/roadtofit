@@ -1,6 +1,6 @@
-<div class="container-header">
+<div class="recettes-container">
   <h1 id="whassup">Quoi de bon au menu ?</h1>
-  <div class="search-bar">
+  <div class="search-bar d-flex justify-content-start">
     <%= form_with url: recettes_path, method: :get, id: "search-form" do %>
       <%= text_field_tag :query,
             params[:query],
@@ -8,11 +8,16 @@
             placeholder: "Rechercher une recette",
             autocomplete: "off",
             id: "search-input",
+            onkeypress: "clickPress(event)",
             autofocus: true %>
     <% end %>
   </div>
-</div>
-<div class="recettes-container">
+  <div class="recettes-filtre">
+    <%= link_to "Petit-déjeuner", recettes_path(repas_de_la_journee: "Petit-déjeuner"), class: "repas" %>
+    <%= link_to "Déjeuner", recettes_path(repas_de_la_journee: "Déjeuner"), class: "repas" %>
+    <%= link_to "Dîner", recettes_path(repas_de_la_journee: "Dîner"), class: "repas" %>
+    <%= link_to "Dessert", recettes_path(repas_de_la_journee: "Dessert"), class: "repas" %>
+  </div>
   <% @recettes.each do |recette| %>
     <div class="recettes-card">
       <%= image_tag url_for(recette.photo), class: "recettes-img" %>
