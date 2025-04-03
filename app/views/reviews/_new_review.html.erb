@@ -1,13 +1,7 @@
 <%= simple_form_for [recette, review] do |f| %>
-  <div class="row">
-    <%= f.label :commentaire, "Commentaire" %>
-  </div>
-  <div class="row p-2">
-    <%= f.text_area :commentaire, placeholder: "Ajoutez un commentaire" %>
-  </div>
-  <div class="row">
-    <%= f.input :note, label: 'Note', collection: Review::AUTHORIZED_RATINGS, include_blank: false %>
-  </div>
+  <%= f.label :commentaire, "Commentaire", class:"mb-2" %>
+  <%= f.text_area :commentaire, placeholder: "Ajoutez un commentaire" %>
+  <%= f.input :note, label: 'Note', collection: Review::AUTHORIZED_RATINGS, include_blank: false %>
   <div class="row">
     <div class="d-flex justify-content-end">
       <%= f.submit "Valider", class: "btn-valider-dark" %>
