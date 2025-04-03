@@ -1,5 +1,9 @@
 <div class="post-container">
 
+  <% if post.user == current_user %>
+    <%= render "dropdown", post: post %>
+  <% end %>
+
   <div class="post-header">
     <%= cl_image_tag post.user.photo.key, class: "profile-picture" %>
     <p class="post-username">

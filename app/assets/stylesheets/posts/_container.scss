@@ -14,6 +14,9 @@
   padding: 10px 15px 15px;
   border-radius: 10px;
   background-color: $color-dark-green;
+  overflow: hidden;
+  position: relative;
+  border: none;
 
   &:not(:first-child) {
     margin: 10px 0px;
@@ -42,13 +45,7 @@
   }
 }
 
-.post-header {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  gap: 10px;
-  margin-bottom: 10px;
-}
+
 
 .post-username {
   font-size: 14px;
@@ -84,4 +81,28 @@
 // class to hide an element
 .hidden {
   display: none;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.dropdown-post {
+  background-color: $color-dark-green;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+
+  position: absolute;
+  right: 0;
+  top: 8%;
+  transform: translateX(66%);
+  transition: all 0.3s ease-out;
 }
