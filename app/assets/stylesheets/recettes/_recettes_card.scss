@@ -5,6 +5,15 @@
     padding: 0px 35px 10px 0px;
 }
 
+.recettes-container {
+  height: 100%;
+  margin: 0;
+  background-color: $color-bg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .recettes-filtre {
   display: flex;
   justify-content: space-between;
@@ -20,19 +29,10 @@
   padding: 8px;
   margin: 5px;
 }
-// .active {
-//   background-color: yellow;
-// }
-
-.recettes-container {
-  height: 100%;
-  margin: 0;
-  background-color: $color-bg;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.active {
+  background-color: yellow;
 }
+
 
 .recettes-card {
   width: 80%;
