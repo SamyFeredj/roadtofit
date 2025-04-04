@@ -14,6 +14,9 @@
   padding: 10px 15px 15px;
   border-radius: 10px;
   background-color: $color-dark-green;
+  overflow: hidden;
+  position: relative;
+  border: none;
 
   &:not(:first-child) {
     margin: 10px 0px;
@@ -42,13 +45,7 @@
   }
 }
 
-.post-header {
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  gap: 10px;
-  margin-bottom: 10px;
-}
+
 
 .post-username {
   font-size: 14px;
@@ -84,4 +81,113 @@
 // class to hide an element
 .hidden {
   display: none;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.dropdown-post {
+  background-color: $color-dark-green;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+
+  position: absolute;
+  right: 0;
+  top: 8%;
+  transform: translateX(66%);
+  transition: all 0.3s ease-out;
+
+  svg {
+    transition: all 0.3 ease-out;
+  }
+}
+
+.playRotateLeft {
+   animation: rotateToLeft 0.4s ease-out;
+}
+
+.playRotateRight {
+  animation: rotateToRight 0.4s ease-out;
+}
+
+
+@keyframes rotateToLeft {
+  0% {
+    transform: rotate(10deg);
+  }
+  10% {
+    transform: rotate(30deg);
+  }
+  20% {
+    transform: rotate(60deg);
+  }
+  30% {
+    transform: rotate(90deg);
+  }
+  40% {
+    transform: rotate(120deg);
+  }
+  50% {
+    transform: rotate(150deg);
+  }
+  60% {
+    transform: rotate(160deg);
+  }
+  70% {
+    transform: rotate(170deg);
+  }
+  80% {
+    transform: rotate(175deg);
+  }
+  90% {
+    transform: rotate(178deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes rotateToRight {
+  0% {
+    transform: rotate(180deg);
+  }
+  10% {
+    transform: rotate(170deg);
+  }
+  20% {
+    transform: rotate(140deg);
+  }
+  30% {
+    transform: rotate(120deg);
+  }
+  40% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(60deg);
+  }
+  60% {
+    transform: rotate(40deg);
+  }
+  70% {
+    transform: rotate(30deg);
+  }
+  80% {
+    transform: rotate(20deg);
+  }
+  90% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
 }
