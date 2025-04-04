@@ -6,7 +6,6 @@
   justify-content: start;
   align-items: end;
   gap: 10px;
-  animation: all 0.3s ease-out;
 
   .percentage {
     margin: 0;
@@ -22,6 +21,7 @@
   background-color: $color-bg;
   border-radius: 10px;
   border: 1px solid $color-dark-green;
+  box-sizing: border-box;
 
   display: flex;
   flex-direction: row;
@@ -29,20 +29,19 @@
   align-items: center;
   gap: 10px;
   position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
 
-  &::after {
+  .fill-progression-bar {
     position: absolute;
-    content: '';
     height: 100%;
     left: 0;
     background-color: $color-dark-green;
-    border-radius: 10px;
   }
 }
 
 .dashboard-details {
   width: 100%;
-  animation: all 0.3s ease-out;
 
   .details {
     display: flex;
@@ -61,7 +60,6 @@
     }
 
     transition: all 0.3s ease-out;
-    animation: all 0.3s ease-out;
   }
 
   .macro {
@@ -94,7 +92,6 @@ ul {
   li {
     margin: 0;
     padding: 0;
-    animation: all 0.3s ease-out;
   }
 
   * {
