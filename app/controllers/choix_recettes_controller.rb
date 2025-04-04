@@ -44,7 +44,7 @@ class ChoixRecettesController < ApplicationController
 
   def destroy
     @choix_recette.destroy
-    redirect_to choix_recettes_path, notice: "Recette supprimée !"
+    redirect_to dashboard_path, notice: "Recette supprimée !"
   end
 
   private

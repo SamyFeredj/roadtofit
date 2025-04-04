@@ -1,14 +1,10 @@
 <div class="dashboard-container" data-controller="carousel">
 
-  <h1 class="best-recettes-title">Découvrez les recettes préférées des Fitos !</h1>
-
-  <%= render "recettes/best_recettes_carousel", recettes: @best_recettes %>
+  <%= render "statistiques_dashboard", daily_cal: @daily_cal, daily_cal_left: @daily_cal_left, proteines: @proteines, glucides: @glucides, lipides: @lipides %>
 
   <%= render "choix_recettes/user_choix_today", choix_recettes: @choix_recettes %>
 
-  <div class="daily-calories mt-5">
-    <h3>INSERER ICI LE NOMBRE DE CALORIES DU JOUR</h3>
-    <p>Calories journalières : <%= @daily_cal %></p>
-    <p>Calories restantes : <%= @daily_cal_left %></p>
-  </div>
+  <h1 class="best-recettes-title">Découvrez les recettes préférées des Fitos !</h1>
+
+  <%= render "recettes/best_recettes_carousel", recettes: @best_recettes %>
 </div>

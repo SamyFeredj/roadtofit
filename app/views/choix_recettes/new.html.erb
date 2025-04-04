@@ -8,8 +8,6 @@
       <%= form.collection_select :recette_id, @recettes, :id, :nom, { prompt: "Sélectionne ta recette" }, { class: 'form-select', style: "background-color: #FFFACD;" } %>
     </div>
 
-    <%= form.hidden_field :recette_id, value: params[:recette_id] %>
-
     <!-- Date du repas -->
     <div class="col-12">
       <%= form.label :date, "Date du repas", class: 'form-label', style: "color: #1E3932;" %>
@@ -27,7 +25,7 @@
     <!-- Boutons -->
     <div class="col-12 d-flex justify-content-between mt-4">
       <%= link_to '⬅️ Retour', choix_recettes_path, class: 'btn btn-supprimer-dark' %>
-      <%= form.submit "Valider ✅", class: 'btn btn-valider-light' %>
+      <%= form.submit "Valider ✅", class: 'btn btn-valider-light'%>
     </div>
   <% end %>
 </div>

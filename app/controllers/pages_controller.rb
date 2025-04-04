@@ -17,9 +17,13 @@ class PagesController < ApplicationController
     # TODO : OBJECTIF CALORIQUE NE DOIT PAS ETRE NIL
     # @daily_cal = @user.objectif_calorique
     @daily_cal = 2000
-    daily_cal_consumed = Recette.where(
+    recettes_made = Recette.where(
       id: @choix_recettes.select { |choix| choix.done }.map { |recette| recette.recette_id }
-    ).sum(:calories)
+    )
+    daily_cal_consumed = recettes_made.sum(:calories)
+    @proteines = recettes_made.sum(:proteines)
+    @lipides = recettes_made.sum(:lipides)
+    @glucides = recettes_made.sum(:glucides)
     @daily_cal_left = @daily_cal - daily_cal_consumed
   end
 
