@@ -29,16 +29,18 @@
   flex-wrap: wrap;
 }
 .repas {
-  text-decoration: none;
   color: $color-bg;
   background-color: $color-dark-green;
   border-radius: 14px;
   padding: 8px;
   margin: 5px;
   text-wrap: nowrap;
+  font-weight: 700;
+  transition: all 0.3s ease;
 }
 .active {
-  background-color: yellow;
+  background-color: $color-second-green;
+  color: $color-dark-green;
 }
 
 

@@ -5,48 +5,38 @@ export default class extends Controller {
 
   static targets = ["petit", "dej", "diner", "dessert"]
 
-  changepetitdej() {
-    this.petitTarget.classList.add("active")
-    this.dejTarget.classList.remove("active")
-    this.dinerTarget.classList.remove("active")
-    this.dessertTarget.classList.remove("active")
-  }
-  changedej() {
-    this.dejTarget.classList.add("active")
-    this.petitTarget.classList.remove("active")
-    this.dinerTarget.classList.remove("active")
-    this.dessertTarget.classList.remove("active")
-  }
-  changediner() {
-    this.dinerTarget.classList.add("active")
-    this.dejTarget.classList.remove("active")
-    this.petitTarget.classList.remove("active")
-    this.dessertTarget.classList.remove("active")
-  }
-  changedessert() {
-    this.dessertTarget.classList.add("active")
-    this.dejTarget.classList.remove("active")
-    this.dinerTarget.classList.remove("active")
-    this.petitTarget.classList.remove("active")
+  initialize() {
+    this.REPAS = {
+      "petitdej": "Petit-déjeuner",
+      "dej": "Déjeuner",
+      "diner": "Dîner",
+      "dessert": "Dessert"
+    }
   }
 
-  petitdej(event) {
-    console.log("coucou");
+  filterMeal(event) {
     const recettes = document.querySelectorAll(".recettes-card");
+    const filtres = document.querySelectorAll(".repas");
 
-    if (this.petitTarget.classList.contains("active")) {
-      // retirer la classe active
-    } else {
+    if (event.currentTarget.classList.contains("active")) {
       recettes.forEach(recette => {
-        if (recette.dataset.repas !== "Petit-déjeuner") {
-          console.log(recette.dataset.repas)
+        recette.style.display = "block";
+      })
+      event.currentTarget.classList.remove("active");
+    } else {
+      // si y a un autre bouton activé
+      filtres.forEach(filtre => {
+        filtre.classList.remove("active");
+      })
+      // si il n'y a aucun bouton activé
+      recettes.forEach(recette => {
+        if (recette.dataset.repas !== this.REPAS[event.currentTarget.dataset.boutoninfo]) {
           recette.style.display = "none";
+        } else {
+          recette.style.display = "block";
         }
       });
-      this.petitTarget.classList.add("active")
+      event.currentTarget.classList.add("active");
     }
-    this.dejTarget.classList.remove("active")
-    this.dinerTarget.classList.remove("active")
-    this.dessertTarget.classList.remove("active")
   }
 }
