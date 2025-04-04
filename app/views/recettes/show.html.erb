@@ -62,10 +62,19 @@
       <p><%= @recette.calories %> cal</p>
     </div>
   </div>
-  <h5>Ingrédients</h5>
+  <h5 id="ingredient-title">Ingrédients</h5>
   <div class="show-ingredients">
     <% @recette.ingredients.split(',').each do |ingredient| %>
-      <p><%= ingredient %></p>
+      <% ingredient_nom = ingredient.split(/\(.*\)/)[0] %>
+      <% ingredient_quantity = ingredient.match(/\(.*\)/) %>
+      <div class="ingredient">
+        <p class="ingredient-nom">
+          <%= ingredient_nom %>
+        </p>
+        <p class="ingredient_quantite">
+          <%= ingredient_quantity %>
+        </p>
+      </div>
     <% end %>
   </div>
   <h5>Instructions</h5>
