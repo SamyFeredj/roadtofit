@@ -9,14 +9,17 @@ export default class extends Controller {
 
   toggleDetails(event) {
     if (this.detailsIconTarget.classList.contains("toggle-icon-tobottom")) {
-      this.macrosTarget.classList.add = "display-details";
-      console.log(this.macrosTarget);
+      // display
+      this.macrosTarget.classList.toggle("display-details");
+      // animation svg
       this.detailsIconTarget.classList.add("playRotateLeft");
       this.detailsIconTarget.style = "transform: rotate(180deg);";
       this.detailsIconTarget.classList.remove("toggle-icon-tobottom");
       this.detailsIconTarget.classList.remove("playRotateRight");
     } else {
-      this.macrosTarget.classList.remove = "display-details";
+      // display
+      this.macrosTarget.classList.toggle("display-details");
+      // animation svg
       this.detailsIconTarget.classList.add("playRotateRight");
       this.detailsIconTarget.classList.remove("playRotateLeft");
       this.detailsIconTarget.style = "transform: rotate(0);";
