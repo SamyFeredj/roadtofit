@@ -29,4 +29,24 @@ export default class extends Controller {
     this.dinerTarget.classList.remove("active")
     this.petitTarget.classList.remove("active")
   }
+
+  petitdej(event) {
+    console.log("coucou");
+    const recettes = document.querySelectorAll(".recettes-card");
+
+    if (this.petitTarget.classList.contains("active")) {
+      // retirer la classe active
+    } else {
+      recettes.forEach(recette => {
+        if (recette.dataset.repas !== "Petit-déjeuner") {
+          console.log(recette.dataset.repas)
+          recette.style.display = "none";
+        }
+      });
+      this.petitTarget.classList.add("active")
+    }
+    this.dejTarget.classList.remove("active")
+    this.dinerTarget.classList.remove("active")
+    this.dessertTarget.classList.remove("active")
+  }
 }

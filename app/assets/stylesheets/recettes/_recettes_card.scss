@@ -1,25 +1,32 @@
-#whassup {
+#index-recette-title {
     font-weight: 800;
     color: $color-dark-green;
-    margin: 20px 0px 0px 0px;
-    padding: 0px 35px 10px 0px;
 }
 
 .recettes-container {
   height: 100%;
   margin: 0;
+  padding: 35px;
   background-color: $color-bg;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
+  #search-form {
+    width: 100%;
+  }
+
+  .search-bar {
+    padding: 35px 0px;
+  }
 }
 .recettes-filtre {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding-top: 16px;
   margin-bottom: 70px;
+  flex-wrap: wrap;
 }
 .repas {
   text-decoration: none;
@@ -28,6 +35,7 @@
   border-radius: 14px;
   padding: 8px;
   margin: 5px;
+  text-wrap: nowrap;
 }
 .active {
   background-color: yellow;

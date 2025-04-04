@@ -1,5 +1,5 @@
 <div class="recettes-container">
-  <h1 id="whassup">Quoi de bon au menu ?</h1>
+  <h1 id="index-recette-title">Quoi de bon au menu aujourd'hui ?</h1>
   <div class="search-bar d-flex justify-content-start">
     <%= form_with url: recettes_path, method: :get, id: "search-form" do %>
       <%= text_field_tag :query,
@@ -12,13 +12,16 @@
     <% end %>
   </div>
   <div class="recettes-filtre" data-controller="boutton-repas">
-    <%= link_to "Petit-déjeuner", recettes_path(repas_de_la_journee: "Petit-déjeuner"), class: "repas", data: { action: "click->boutton-repas#changepetitdej", boutton_repas_target:"petit" } %>
+    <%# <%= link_to "Petit-déjeuner", recettes_path(repas_de_la_journee: "Petit-déjeuner"), class: "repas", data: { action: "click->boutton-repas#changepetitdej", boutton_repas_target:"petit" } %>
+    <p class="repas"
+    data-action="click->boutton-repas#petitdej"
+    data-boutton-repas-target="petit">Petit-déjeuner</p>
     <%= link_to "Déjeuner", recettes_path(repas_de_la_journee: "Déjeuner"), class: "repas", data: { action: "click->boutton-repas#changedej", boutton_repas_target:"dej" } %>
     <%= link_to "Dîner", recettes_path(repas_de_la_journee: "Dîner"), class: "repas", data: { action: "click->boutton-repas#changediner", boutton_repas_target:"diner" } %>
     <%= link_to "Dessert", recettes_path(repas_de_la_journee: "Dessert"), class: "repas", data: { action: "click->boutton-repas#changedessert", boutton_repas_target:"dessert" } %>
   </div>
   <% @recettes.each do |recette| %>
-    <div class="recettes-card">
+    <div class="recettes-card" data-repas=<%=recette.repas_de_la_journee%>>
       <%= image_tag url_for(recette.photo), class: "recettes-img" %>
       <div class="recettes-icons">
         <%# like = Like.where(user_id: current_user.id).first %>
