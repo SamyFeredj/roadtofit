@@ -6,6 +6,10 @@ class RecettesController < ApplicationController
       sql_subquery = "nom ILIKE :query OR ingredients ILIKE :query"
       @recettes = @recettes.where(sql_subquery, query: "%#{params[:query]}%")
     end
+
+    if params[:repas_de_la_journee].present?
+      @recettes = @recettes.where(repas_de_la_journee: params[:repas_de_la_journee])
+    end
   end
 
   def show
