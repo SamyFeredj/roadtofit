@@ -71,7 +71,7 @@
   <h5>Instructions</h5>
   <div class="show-instructions">
     <% @recette.instructions.split(/\r?\n/).each do |instruction| %>
-      <p><%= instruction %></p>
+      <p><span class="etape-recette">Étape <%= instruction[0] %>.</span><%= instruction[3..] %></p>
     <% end %>
   </div>
   <div class="show-calories">
