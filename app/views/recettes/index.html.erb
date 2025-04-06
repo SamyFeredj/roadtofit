@@ -1,16 +1,23 @@
 <div class="recettes-container">
   <h1 id="index-recette-title">Quoi de bon au menu aujourd'hui ?</h1>
-  <div class="search-bar d-flex justify-content-start">
-    <%= form_with url: recettes_path, method: :get, id: "search-form" do %>
+  <%= form_with url: recettes_path, method: :get, id: "search-bar", local: true do %>
+    <div class="search-bar d-flex justify-content-start" data-controller="search-bar">
       <%= text_field_tag :query,
             params[:query],
             class: "form-control",
             placeholder: "Rechercher une recette",
             autocomplete: "off",
             id: "search-input",
+            data: { search_bar_target: "input", action: "input->search-bar#inputChanged" },
             autofocus: true %>
-    <% end %>
-  </div>
+
+      <%= button_tag type: "button", data: { search_bar_target: "clearButton", action: "click->search-bar#clearInput" }, class: "clear-btn cursor-pointer absolute top-1/2 right-2 -translate-y-1/2 hidden" do %>
+        <svg width="24" height="21" xmlns="http://www.w3.org/2000/svg" fill="#1E3932" viewBox="0 0 384 512">
+          <path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/>
+        </svg>
+      <% end %>
+    </div>
+  <% end %>
   <div class="recettes-filtre" data-controller="boutton-repas">
     <p class="repas"
     data-action="click->boutton-repas#filterMeal"
@@ -24,7 +31,6 @@
     <p class="repas"
     data-action="click->boutton-repas#filterMeal"
     data-boutton-repas-target="dessert" data-boutoninfo="dessert">Dessert</p>
-
   </div>
   <% @recettes.each do |recette| %>
     <div class="recettes-card" data-repas=<%=recette.repas_de_la_journee%>>
