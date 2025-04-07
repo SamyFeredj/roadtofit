@@ -1,61 +1,53 @@
 <div class="container-fluid py-3 px-3" style="background-color: #FFFACD; min-height: 100vh;">
-  <h1 class="mb-3 text-center" style="color: #1E3932; font-size: 1.8rem; font-weight: bold;">Meal History</h1>
+  <h1 class="mb-4 text-center" style="color: #1E3932; font-size: 28px; font-weight: bold;">
+    Mon historique de recettes
+  </h1>
 
   <% @choix_par_jour.each do |date, choix_du_jour| %>
-    <div style="margin-top: 0.5rem; margin-bottom: 1rem;">
-
-      <h4 class="mb-1 mt-0" style="color: #1E3932; font-size: 1.25rem; font-weight: 600; line-height: 1.2; letter-spacing: 0.3px;">
+    <div class="mb-4">
+      <!-- 📅 Titre centré -->
+      <h3 class="text-center mb-3" style="color: #1E3932; font-size: 20px; font-weight: 600;">
         <%= date.strftime("%A %d %B") %>
-      </h4>
+      </h3>
 
-      <div class="scrolling-wrapper d-flex flex-row overflow-auto gap-3" style="margin-top: 0rem;">
+      <!-- 🧾 Scroll horizontal si trop de cartes -->
+      <div class="d-flex flex-row flex-nowrap overflow-auto gap-3 px-1">
         <% choix_du_jour.each do |choix| %>
-          <% if choix.recette.present? %>
-            <%= link_to recette_path(choix.recette), class: "text-decoration-none", data: { turbo: false } do %>
-              <div class="card flex-shrink-0 d-flex flex-column justify-content-between"
-                    style=" box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12); width: 210px; height: 290px; border-radius: 14px; background-color: #FFFACD; overflow: hidden; border: 3px solid #1E3932;">
+          <% recette = choix.recette %>
+          <% if recette.present? %>
+            <%= link_to recette_path(recette), class: "text-decoration-none", style: "color: inherit; flex: 0 0 auto;" do %>
+              <div class="recettes-card d-flex flex-column justify-content-between"
+                   style="background-color: #D1E383; border-radius: 12px; padding: 28px; width: 300px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-bottom: 30px;">
 
-                <% if choix.recette.photo.attached? %>
-                  <%= image_tag choix.recette.photo, class: "card-img-top", style: "height: 135px; object-fit: cover;" %>
+                <!-- 📸 Image -->
+                <% if recette.photo.attached? %>
+                  <%= image_tag recette.photo, class: "recettes-img", style: "width: 100%; height: 150px; object-fit: cover; border-radius: 1px;" %>
                 <% else %>
-                  <%= image_tag "placeholder.jpg", class: "card-img-top", style: "height: 135px; object-fit: cover;" %>
+                  <%= image_tag "placeholder.jpg", class: "recettes-img", style: "width: 100%; height: 150px; object-fit: cover; border-radius: 1px;" %>
                 <% end %>
 
-                <div class="card-body text-center py-2 px-2 d-flex flex-column justify-content-between" style="flex-grow: 1;">
-                  <h5 class="card-title mb-1" style="color: #1E3932; font-size: 0.95rem; font-weight: 600;"><%= choix.recette.nom %></h5>
+                <!-- 📝 Contenu -->
+                <div class="mt-2">
+                  <h4 style="font-size: 16px; color: #1E3932; font-weight: 600; margin-bottom: 8px;">
+                    <%= recette.nom %>
+                  </h4>
 
-                  <!-- Infos pratiques -->
-                  <div class="d-flex justify-content-around align-items-center mt-2">
-                    <!-- Difficulté -->
-                    <div class="d-flex flex-column align-items-center">
-                      <svg width="18" height="18" fill="#1E3932" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M576 0c17.7 0 32 14.3 32 32v448c0 17.7-14.3 32-32 32s-32-14.3-32-32V32c0-17.7 14.3-32 32-32zM448 96c17.7 0 32 14.3 32 32v352c0 17.7-14.3 32-32 32s-32-14.3-32-32V128c0-17.7 14.3-32 32-32zM352 224v256c0 17.7-14.3 32-32 32s-32-14.3-32-32V224c0-17.7 14.3-32 32-32s32 14.3 32 32zM192 288c17.7 0 32 14.3 32 32v160c0 17.7-14.3 32-32 32s-32-14.3-32-32V320c0-17.7 14.3-32 32-32zM96 416v64c0 17.7-14.3 32-32 32s-32-14.3-32-32v-64c0-17.7 14.3-32 32-32s32 14.3 32 32z"/>
-                      </svg>
-                      <p class="mb-0 mt-1" style="font-size: 0.7rem;"><%= choix.recette.difficulte %></p>
-                    </div>
-
-                    <!-- Calories -->
-                    <div class="d-flex flex-column align-items-center">
-                      <svg width="18" height="18" fill="#1E3932" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M505 41c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0L383 95c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l88-88z..." />
-                      </svg>
-                      <p class="mb-0 mt-1" style="font-size: 0.7rem;"><%= choix.recette.calories %> cal</p>
-                    </div>
-
-                    <!-- Temps -->
-                    <div class="d-flex flex-column align-items-center">
-                      <svg width="18" height="18" fill="#1E3932" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120l0 136c0 8 4 15.5 10.7 20l96 64..." />
-                      </svg>
-                      <p class="mb-0 mt-1" style="font-size: 0.7rem;"><%= choix.recette.temps_de_preparation %> min</p>
-                    </div>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span style="font-size: 13px; color: #555; white-space: nowrap;">
+                      <%= recette.repas_de_la_journee.capitalize %>
+                    </span>
+                    <% if choix.done? %>
+                      <span class="badge rounded-pill"
+                            style="background-color: #6FCF97; color: white; font-size: 12px; padding: 4px 8px;">
+                         Réalisée
+                      </span>
+                    <% else %>
+                      <span class="badge rounded-pill"
+                            style="background-color: #EB5757; color: white; font-size: 12px; padding: 4px 8px;">
+                         Non réalisée
+                      </span>
+                    <% end %>
                   </div>
-
-                  <% if choix.done? %>
-                    <span class="badge mt-2" style= "color: #A3CB38; font-size: 1rem;"> Done</span>
-                  <% else %>
-                    <span class="badge mt-2" style="color:rgb(252, 67, 67); font-size: 1.0rem;"> Not done</span>
-                  <% end %>
                 </div>
               </div>
             <% end %>
@@ -65,3 +57,5 @@
     </div>
   <% end %>
 </div>
+
+
