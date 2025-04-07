@@ -1,7 +1,7 @@
-<div class="recettes-container">
+<div class="recettes-container" data-controller="search-bar">
   <h1 id="index-recette-title">Quoi de bon au menu aujourd'hui ?</h1>
-  <%= form_with url: recettes_path, method: :get, id: "search-bar", local: true do %>
-    <div class="search-bar d-flex justify-content-start" data-controller="search-bar">
+  <%= form_with url: recettes_path, method: :get, id: "search-bar", local: true, data: { action: "submit->search-bar#submit"} do %>
+    <div class="search-bar d-flex justify-content-start">
       <%= text_field_tag :query,
             params[:query],
             class: "form-control",
