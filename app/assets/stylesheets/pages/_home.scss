@@ -1,1 +1,12 @@
-// Specific CSS for your home-page
+.home-container {
+  height: 100vh;
+  padding: 20px;
+  margin: 0;
+  background-color: $color-second-green;
+  text-align: center;
+  color: $color-dark-green;
+}
+
+svg {
+  margin-bottom: 200px;
+}
