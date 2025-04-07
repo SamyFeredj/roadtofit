@@ -4,28 +4,58 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["input", "clearButton"]
 
+
   connect() {
-    console.log("hello c connecte")
-    this.toggleClearButton();
+    console.log("Search bar controller connected");
   }
 
-  toggleClearButton() {
-    if (this.inputTarget.value) {
-      this.clearButtonTarget.style.display = "inline";
+
+  searchRecettes(event) {
+    event.preventDefault();
+    const query = this.inputTarget.value.toLowerCase();
+
+    const recettesCards = document.querySelectorAll('.recettes-card');
+
+    if (query.length === 0) {
+      recettesCards.forEach(card => {
+        card.style.display = 'block';
+      });
     } else {
-      this.clearButtonTarget.style.display = "none";
+      recettesCards.forEach(card => {
+        const title = card.querySelector('h4').textContent.toLowerCase();
+        if (title.includes(query)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
     }
   }
-
-  clearInput() {
-    this.inputTarget.value = "";
-    this.toggleClearButton();
-
-    const urlWithoutQuery = window.location.pathname;
-    window.location.href = urlWithoutQuery;
-  }
-
-  inputChanged() {
-    this.toggleClearButton();
-  }
 }
+
+
+//   connect() {
+//     console.log("hello c connecte")
+//     this.toggleClearButton();
+//   }
+
+//   toggleClearButton() {
+//     if (this.inputTarget.value) {
+//       this.clearButtonTarget.style.display = "inline";
+//     } else {
+//       this.clearButtonTarget.style.display = "none";
+//     }
+//   }
+
+//   clearInput() {
+//     this.inputTarget.value = "";
+//     this.toggleClearButton();
+
+//     const urlWithoutQuery = window.location.pathname;
+//     window.location.href = urlWithoutQuery;
+//   }
+
+//   inputChanged() {
+//     this.toggleClearButton();
+//   }
+// }
