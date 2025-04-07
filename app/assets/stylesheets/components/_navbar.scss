@@ -12,19 +12,40 @@
 
   .nav-item {
     display: flex;
+    flex-direction: column; // ✅ pour que l’icône soit au-dessus du label
     align-items: center;
     justify-content: center;
     padding: 6px;
+    text-decoration: none;
   }
 
   .nav-icon {
     width: 24px;
     height: 24px;
     filter: brightness(0) saturate(100%) invert(94%) sepia(11%) saturate(489%) hue-rotate(3deg) brightness(97%) contrast(90%);
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out, filter 0.2s ease;
   }
 
   .nav-icon:hover {
     transform: scale(1.2);
+  }
+
+  .nav-label {
+    font-size: 10px;
+    margin-top: 4px;
+    color: rgba(255, 255, 255, 0.6); // discret par défaut
+    transition: color 0.2s ease;
+  }
+
+  .nav-item.active {
+    .nav-icon {
+      filter: none; //  remove le filtre sur icône active
+    }
+
+    .nav-label {
+      color: #A3CB38;
+      font-weight: 500;
+      opacity: 1;
+    }
   }
 }

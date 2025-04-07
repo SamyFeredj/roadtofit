@@ -36,11 +36,17 @@ class ChoixRecettesController < ApplicationController
 
   def update
     if @choix_recette.update(choix_recette_params)
-      redirect_to choix_recettes_path, notice: "Recette mise à jour !"
+      respond_to do |format|
+        format.html { head :no_content } # ⛔️ pas de redirection
+        format.json { head :no_content }
+      end
     else
-      render :edit, status: :unprocessable_entity
+      respond_to do |format|
+        format.html { redirect_to dashboard_path, alert: "Erreur lors de la mise à jour." }
+      end
     end
   end
+
 
   def destroy
     @choix_recette.destroy

@@ -1,17 +1,22 @@
-<nav class="navbar-bottom">
-  <%= link_to posts_path, class: 'nav-item' do %>
-    <%= image_tag 'icons/home.svg', class: 'nav-icon' %>
+<nav class="navbar-bottom d-flex justify-content-around align-items-center py-2">
+  <%= link_to posts_path, class: "nav-item text-center #{'active' if current_page?(posts_path)}" do %>
+    <%= image_tag 'icons/home.svg', class: 'nav-icon mb-1' %>
+    <div class="nav-label">Actu</div>
   <% end %>
 
-  <%= link_to "#", class: 'nav-item' do %>
-    <%= image_tag 'icons/stats.svg', class: 'nav-icon' %>
+  <%= link_to recettes_path, class: "nav-item text-center #{'active' if current_page?(recettes_path)}" do %>
+    <%= image_tag 'icons/food.svg', class: 'nav-icon mb-1' %>
+    <div class="nav-label">Recettes</div>
   <% end %>
 
-  <%= link_to recettes_path, class: 'nav-item' do %>
-    <%= image_tag 'icons/food.svg', class: 'nav-icon' %>
+  <%= link_to choix_recettes_path, class: "nav-item text-center #{'active' if current_page?(choix_recettes_path)}" do %>
+    <%= image_tag 'icons/stats.svg', class: 'nav-icon mb-1' %>
+    <div class="nav-label">Historique</div>
   <% end %>
 
-  <%= link_to dashboard_path, class: 'nav-item' do %>
-    <%= image_tag 'icons/user.svg', class: 'nav-icon' %>
+  <%= link_to dashboard_path, class: "nav-item text-center #{'active' if current_page?(dashboard_path)}" do %>
+    <%= image_tag 'icons/user.svg', class: 'nav-icon mb-1' %>
+    <div class="nav-label">Profil</div>
   <% end %>
 </nav>
+

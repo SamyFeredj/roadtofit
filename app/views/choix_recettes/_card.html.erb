@@ -1,5 +1,5 @@
 <%= turbo_frame_tag "choix_#{choix.id}" do %>
-  <div class="card me-3 flex-shrink-0" style="width: 250px; border-left: 4px solid #A3CB38; background-color: white; box-shadow: 0 4px 8px rgba(20, 83, 45, 0.1); border-radius: 12px;">
+  <div class="card me-3 flex-shrink-0" style="width: 250px; border-left: 4px solid #1E3932; background-color: #D1E383; box-shadow: 0 4px 8px rgba(20, 83, 45, 0.1); border-radius: 12px;">
 
     <%# Image de la recette %>
     <% if choix.recette.photo.attached? %>
@@ -10,10 +10,9 @@
 
     <div class="card-body position-relative">
       <h5 class="card-title" style="color: #1E3932; font-weight: 600;"><%= choix.recette.nom %></h5>
-      <p class="card-text" style="color: #14532d;"><%= choix.date.strftime("%d/%m/%Y") %></p>
 
       <%# Formulaire pour la checkbox %>
-      <%= form_with model: choix, url: choix_recette_path(choix), method: :patch, scope: :choix_recette, data: { turbo_frame: "choix_#{choix.id}" } do |form| %>
+      <%= form_with model: choix, url: choix_recette_path(choix), method: :patch, local: true, scope: :choix_recette, data: { turbo_frame: "choix_#{choix.id}" } do |form| %>
         <div class="form-check">
           <%= form.check_box :done, { class: "form-check-input", onchange: "this.form.submit();" }, true, false %>
           <%= form.label :done, "Marquée comme faite", class: "form-check-label", style: "color: #1E3932;" %>
@@ -22,7 +21,7 @@
 
       <%# Bouton vers show recette (SVG) %>
       <%= link_to recette_path(choix.recette), class: "custom-plus-btn position-absolute bottom-0 end-0 m-2", data: { turbo: false } do %>
-        <svg width="28" height="32" viewBox="0 0 32 37" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="20" height="20" viewBox="0 0 32 37" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M18.2857 5.78125C18.2857 4.50215 17.2643 3.46875 16 3.46875C14.7357 3.46875 13.7143 4.50215 13.7143 5.78125V16.1875H3.4286C2.16431 16.1875 1.14288 17.2209 1.14288 18.5C1.14288 19.7791 2.16431 20.8125 3.4286 20.8125H13.7143V31.2188C13.7143 32.4979 14.7357 33.5312 16 33.5312C17.2643 33.5312 18.2857 32.4979 18.2857 31.2188V20.8125H28.5715C29.8357 20.8125 30.8572 19.7791 30.8572 18.5C30.8572 17.2209 29.8357 16.1875 28.5715 16.1875H18.2857V5.78125Z" fill="#1E3932"/>
         </svg>
       <% end %>
