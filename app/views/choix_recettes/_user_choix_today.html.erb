@@ -1,12 +1,6 @@
-<h1>
+<h1 class="mb-5">
   Qu'est-ce qu'on mange aujourd'hui ?
 </h1>
-<div class="parcourir-recettes">
-  <%= link_to 'Parcourir les recettes', recettes_path, class: 'btn btn-valider-light' %>
-</div>
-
-<div class="container mt-5 mb-3" style="background-color: #FFFACD; border-radius: 12px;">
-  <h1 class="mb-4 text-center" style="color: #1E3932;">📅 Mes recettes du jour</h1>
 
 <div class="scrolling-wrapper d-flex flex-row flex-nowrap overflow-auto gap-3 px-2">
   <% choix_recettes.each do |choix| %>
@@ -14,8 +8,6 @@
   <% end %>
 </div>
 
+<div class="d-flex justify-content-end my-5">
+  <%= link_to 'Ajouter une recette pour aujourd\'hui', new_choix_recette_path, class: 'btn btn-valider-light' %>
 </div>
-<div class="d-flex justify-content-end mb-4">
-    <%= link_to '➕ Ajouter une recette pour aujourd\'hui', new_choix_recette_path,
-      class: 'btn btn-valider-light' %>
-  </div>

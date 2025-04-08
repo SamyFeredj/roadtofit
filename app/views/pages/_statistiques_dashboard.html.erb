@@ -3,7 +3,7 @@
 <% percentage = ((daily_cal - daily_cal_left).fdiv(daily_cal) * 100).round(0) %>
 
 <div class="dashboard-statistiques" data-controller="progression-bar" data-progression-bar-calories-value=<%=percentage%>>
-  <p class="percentage"><%= daily_cal_left %> <span class="kcal">kcal</span> </p>
+  <p class="percentage"><span id="text-calorie">Plus que</span><%= daily_cal_left %> <span class="kcal">kcal</span> </p>
 
   <div class="calories-progression-bar">
     <div class="fill-progression-bar" data-progression-bar-target="bar"></div>
