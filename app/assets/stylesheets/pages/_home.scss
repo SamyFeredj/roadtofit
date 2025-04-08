@@ -10,14 +10,9 @@
   justify-content: center;
 }
 
-svg {
-  margin-bottom: 200px;
-}
-
-svg path {
-  fill: #0F5721;
+#logo-home path {
   fill-opacity: 0;
-  stroke: #0F5721;
+  stroke: $color-dark-green;
   stroke-width: 2;
   stroke-dasharray: 4000;
   stroke-dashoffset: 4000;
