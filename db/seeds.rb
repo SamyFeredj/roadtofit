@@ -322,16 +322,19 @@ puts " ===== "
 print "> Review 1..."
 r1 = Review.new(user: u1, recette: recette1, note: 5, commentaire: "Recette très simple à réaliser et délicieuse !")
 r1.save!
+recette1.calculate_average_rating
 puts "OK"
 #
 print "> Review 2..."
 r2 = Review.new(user: u2, recette: recette1, note: 4, commentaire: "J'ai adoré, mais j'ai trouvé que c'était un peu trop salé.")
 r2.save!
+recette1.calculate_average_rating
 puts "OK"
 #
 print "> Review 3..."
 r3 = Review.new(user: u3, recette: recette1, note: 5, commentaire: "Recette parfaite, je la referai sans hésiter !")
 r3.save!
+recette1.calculate_average_rating
 puts "OK"
 
 puts " ===== "
