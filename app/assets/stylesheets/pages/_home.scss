@@ -1,13 +1,17 @@
-.home-logo-container {
-  height: 100vh;
-  padding: 20px;
-  margin: 0;
-  background-color: $color-second-green;
-  text-align: center;
-  color: $color-dark-green;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+// .home-logo-container {
+//   min-height: 100vh;
+//   padding: 20px;
+//   margin: 0;
+//   background-color: $color-second-green;
+//   text-align: center;
+//   color: $color-dark-green;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+#logo-home {
+  margin-top: 330px;
 }
 
 #logo-home path {
@@ -32,10 +36,86 @@
 }
 
 .home-container {
-  // height: 100vh;
+  min-height: 100vh;
   padding: 20px;
   margin: 0;
   background-color: $color-second-green;
   text-align: center;
   color: $color-dark-green;
+}
+
+.home-container p {
+  position: relative;
+  margin-top: 80px;
+}
+
+.home-recettes-bowl {
+  height: 350px;
+  width: 350px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.home-recettes-pasta {
+  height: 350px;
+  width: 350px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+// .fade-in {
+//   opacity: 0;
+//   animation: fadeIn 8s forwards;
+// }
+
+// @keyframes fadeIn {
+//   0% {
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 1;
+//   }
+// }
+
+/* On commence avec l'image hors du champ de vision */
+.slide-in-pasta {
+  position: absolute;
+  left: -100%; /* L'image commence en dehors à gauche */
+  opacity: 0; /* L'image est invisible au début */
+  animation: slideInPasta 1s ease-out forwards;
+  animation-delay: 1s; /* délai avant que l'animation commence (ici, 1 seconde) */
+}
+
+/* Définition de l'animation */
+@keyframes slideInPasta {
+  0% {
+    left: -100%; /* L'image commence à gauche, hors de la page */
+    opacity: 0; /* L'image est invisible au début */
+  }
+  100% {
+    bottom: -35px;
+    left: -65px; /* L'image se déplace à sa position normale */
+    opacity: 1; /* L'image devient complètement visible */
+  }
+}
+
+.slide-in-bowl {
+  position: absolute;
+  right: -100%; /* L'image commence en dehors à gauche */
+  opacity: 0; /* L'image est invisible au début */
+  animation: slideInBowl 1s ease-out forwards;
+  animation-delay: 1s; /* délai avant que l'animation commence (ici, 1 seconde) */
+}
+
+/* Définition de l'animation */
+@keyframes slideInBowl {
+  0% {
+    right: -100%; /* L'image commence à gauche, hors de la page */
+    opacity: 0; /* L'image est invisible au début */
+  }
+  100% {
+    top: -40px;
+    right: -70px;
+    opacity: 1; /* L'image devient complètement visible */
+  }
 }
