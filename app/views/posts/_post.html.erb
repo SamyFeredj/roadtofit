@@ -45,13 +45,13 @@
       <h5 class="offcanvas-title" id="offcanvasBottomLabel">Commentaires</h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-    <div class="offcanvas-body small">
+    <div class="offcanvas-body small" data-controller="commentaires">
       <%= turbo_frame_tag "commentaires_#{post.id}" do %>
         <%= render "commentaires/commentaire", post: post %>
       <% end %>
-      <%= simple_form_for([post, @commentaire]) do |f| %>
+      <%= simple_form_for([post, @commentaire], data: { action: "turbo:submit-end->commentaires#submit"}) do |f| %>
         <div class="new-commentaire">
-          <%= f.text_area :content, placeholder: "Ajoutez un commentaire" %>
+          <%= f.text_area :content, placeholder: "Ajoutez un commentaire", data: { commentaires_target: "input"} %>
           <%= button_tag type: 'submit', class: "new-post-icon" do %>
             <svg width="25" height="22" viewBox="0 0 30 27" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd" d="M1.91941 0.0981928L29.4044 12.3189C29.5737 12.3759 29.7218 12.4827 29.8293 12.6253C29.9369 12.7679 29.9988 12.9397 30.007 13.1181C30.0152 13.2965 29.9693 13.4733 29.8754 13.6252C29.7814 13.7771 29.6437 13.897 29.4803 13.9693L1.92631 26.3316C1.76806 26.4029 1.59233 26.4262 1.42096 26.3985C1.24958 26.3709 1.0901 26.2935 0.962316 26.176C0.834528 26.0585 0.744058 25.9061 0.702138 25.7376C0.660219 25.5692 0.668694 25.3921 0.726513 25.2285L3.99792 15.8355L18.7684 13.2149L4.03244 10.5943L0.723059 1.20132C0.66578 1.03803 0.65756 0.861545 0.699411 0.693639C0.741263 0.525732 0.831355 0.37375 0.958572 0.256447C1.08579 0.139143 1.24456 0.0616497 1.41531 0.0335276C1.58605 0.00540549 1.76129 0.0278851 1.91941 0.0981928Z" fill="#1E3932"/>
