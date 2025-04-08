@@ -1,4 +1,4 @@
-<div class="home-container">
+<div class="images-container">
 <%# <div class="home-logo-container"> %>
   <svg id="logo-home" height="178px" width="194px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 742.2 681.9" style="enable-background:new 0 0 742.2 681.9;" xml:space="preserve">
@@ -97,14 +97,24 @@
     <path class="st1" d="M468.4,129.6c0.4,0,0.8,0,1.2,0c-0.2,0.3-0.3,0.5-0.5,0.8C468.9,130.1,468.7,129.9,468.4,129.6z"/>
   </svg>
 <%# </div> %>
-  <p>
-  Des plats healthy accessibles à tous pour atteindre vos objectifs physiques.
-  <br>
-  <br>
-  Vous aussi, rejoignez le réseau social le plus fit possible !
-  </p>
-  <%= image_tag "bowl.jpg", alt: "bowl poulet", class: "home-recettes-bowl slide-in-bowl"%>
-    <%= image_tag "pasta.jpg", alt: "pasta", class: "home-recettes-pasta slide-in-pasta"%>
+  <%= image_tag "bowl.jpg", alt: "bowl poulet", class: "images-recettes-bowl slide-in-bowl"%>
+  <%= image_tag "pasta.jpg", alt: "pasta", class: "images-recettes-pasta slide-in-pasta"%>
+</div>
+<div class="text-container" data-controller="homepage">
+  <div class="text">
+    <p>
+      Des plats healthy accessibles à tous pour atteindre vos objectifs physiques.
+    <br>
+    <br>
+    Vous aussi, rejoignez le réseau social le plus fit possible !
+    </p>
+  </div>
+  <div class="stats-card">
+    <h2>+500 recettes</h2>
+    <h2>1M d'utilisateurs</h2>
+    <h2>5/5, +200 avis</h2>
+  </div>
+  <%= image_tag "ratatouille.jpg", alt: "ratatouille", class: "images-recettes-ratatouille", data: { homepage_target: "image" }%>
 </div>
 
 
