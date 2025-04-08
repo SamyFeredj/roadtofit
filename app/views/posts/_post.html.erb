@@ -49,7 +49,7 @@
       <%= turbo_frame_tag "commentaires_#{post.id}" do %>
         <%= render "commentaires/commentaire", post: post %>
       <% end %>
-      <%= simple_form_for([post, @commentaire], data: { action: "submit->commentaires#submit"}) do |f| %>
+      <%= simple_form_for([post, @commentaire], data: { action: "turbo:submit-end->commentaires#submit"}) do |f| %>
         <div class="new-commentaire">
           <%= f.text_area :content, placeholder: "Ajoutez un commentaire", data: { commentaires_target: "input"} %>
           <%= button_tag type: 'submit', class: "new-post-icon" do %>
