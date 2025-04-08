@@ -1,10 +1,13 @@
-.home-container {
+.home-logo-container {
   height: 100vh;
   padding: 20px;
   margin: 0;
   background-color: $color-second-green;
   text-align: center;
   color: $color-dark-green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 svg {
@@ -31,4 +34,13 @@ svg path {
   to {
     fill-opacity: 1;
   }
+}
+
+.home-container {
+  // height: 100vh;
+  padding: 20px;
+  margin: 0;
+  background-color: $color-second-green;
+  text-align: center;
+  color: $color-dark-green;
 }
