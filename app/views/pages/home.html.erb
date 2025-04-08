@@ -110,15 +110,15 @@
     </p>
   </div>
   <div class="stats-card">
-    <h2>+500 recettes</h2>
-    <h2>1M d'utilisateurs</h2>
-    <h2>5/5, +200 avis</h2>
+    <h3>+500 recettes</h3>
+    <h3>1M d'utilisateurs</h3>
+    <h3>5/5, +200 avis</h3>
   </div>
-  <%= image_tag "ratatouille.jpg", alt: "ratatouille", class: "images-recettes-ratatouille", data: { homepage_target: "image" }%>
-  <%# <div class="dashboard-container" data-controller="carousel">
-    <h1 class="best-recettes-title">Découvrez les recettes préférées des Fitos !</h1> %>
-    <%#= render "recettes/best_recettes_carousel", recettes: @best_recettes %>
-  <%# </div> %>
+  <%#= image_tag "ratatouille.jpg", alt: "ratatouille", class: "images-recettes-ratatouille", data: { homepage_target: "image" }%>
+</div>
+<div class="dashboard-container">
+  <h1>Découvrez les recettes préférées des Fitos !</h1>
+  <%= render "recettes/best_recettes_carousel", recettes: @best_recettes %>
 </div>
 
 
