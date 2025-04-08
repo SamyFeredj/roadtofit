@@ -1,5 +1,5 @@
 .images-container {
-  height: 100vh;
+  height: 105vh;
   padding: 20px;
   margin: 0;
   background-color: $color-second-green;
@@ -10,7 +10,7 @@
 }
 
 #logo-home {
-  margin-top: 330px;
+  margin-top: 300px;
 }
 
 #logo-home path {
@@ -36,8 +36,8 @@
 
 
 .images-recettes-bowl {
-  height: 350px;
-  width: 350px;
+  height: 300px;
+  width: 300px;
   border-radius: 50%;
   object-fit: cover;
   right: -56px;
@@ -45,12 +45,12 @@
 }
 
 .images-recettes-pasta {
-  height: 350px;
-  width: 350px;
+  height: 300px;
+  width: 300px;
   border-radius: 50%;
   object-fit: cover;
-  bottom: 0px;
-  left: -65px;
+  bottom: 40px;
+  left: -66px;
 }
 
 
@@ -116,8 +116,8 @@
 }
 
 .images-recettes-ratatouille {
-  height: 350px;
-  width: 350px;
+  height: 300px;
+  width: 300px;
   border-radius: 50%;
   object-fit: cover;
   right: -30px;
