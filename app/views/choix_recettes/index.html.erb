@@ -1,28 +1,61 @@
-<div class="container-fluid p-3" style="background-color: #FFFACD; min-height: 100vh;">
-  <h1 class="mb-4" style="color: #1E3932;">Historique de mes repas</h1>
+<div class="container-fluid py-3 px-3" style="background-color: #FFFACD; min-height: 100vh;">
+  <h1 class="mb-4 text-center" style="color: #1E3932; font-size: 28px; font-weight: bold;">
+    Mon historique de recettes
+  </h1>
 
   <% @choix_par_jour.each do |date, choix_du_jour| %>
     <div class="mb-4">
-      <h4 class="mb-3" style="color: #A3CB38;">
-        <%= l(date, format: "%A %d %B") %>
-      </h4>
+      <!-- 📅 Titre centré -->
+      <h3 class="text-center mb-3" style="color: #1E3932; font-size: 20px; font-weight: 600;">
+        <%= date.strftime("%A %d %B") %>
+      </h3>
 
-      <% choix_du_jour.each do |choix| %>
-        <div class="card mb-2 shadow-sm" style="border-left: 5px solid #A3CB38;">
-          <div class="card-body" style="background-color: #FFFFFF;">
-            <h5 class="card-title mb-1" style="color: #1E3932;"><%= choix.recette.nom %></h5>
+      <!-- 🧾 Scroll horizontal si trop de cartes -->
+      <div class="d-flex flex-row flex-nowrap overflow-auto gap-3 px-1">
+        <% choix_du_jour.each do |choix| %>
+          <% recette = choix.recette %>
+          <% if recette.present? %>
+            <%= link_to recette_path(recette), class: "text-decoration-none", style: "color: inherit; flex: 0 0 auto;" do %>
+              <div class="recettes-card d-flex flex-column justify-content-between"
+                   style="background-color: #D1E383; border-radius: 12px; padding: 28px; width: 300px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-bottom: 30px;">
 
-            <p class="card-text mb-0" style="color: #2e4239;">
-              Statut :
-              <% if choix.done? %>
-                ✅ Réalisée
-              <% else %>
-                ❌ Non réalisée
-              <% end %>
-            </p>
-          </div>
-        </div>
-      <% end %>
+                <!-- 📸 Image -->
+                <% if recette.photo.attached? %>
+                  <%= image_tag recette.photo, class: "recettes-img", style: "width: 100%; height: 150px; object-fit: cover; border-radius: 1px;" %>
+                <% else %>
+                  <%= image_tag "placeholder.jpg", class: "recettes-img", style: "width: 100%; height: 150px; object-fit: cover; border-radius: 1px;" %>
+                <% end %>
+
+                <!-- 📝 Contenu -->
+                <div class="mt-2">
+                  <h4 style="font-size: 16px; color: #1E3932; font-weight: 600; margin-bottom: 8px;">
+                    <%= recette.nom %>
+                  </h4>
+
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span style="font-size: 13px; color: #555; white-space: nowrap;">
+                      <%= recette.repas_de_la_journee.capitalize %>
+                    </span>
+                    <% if choix.done? %>
+                      <span class="badge rounded-pill"
+                            style="background-color: #6FCF97; color: white; font-size: 12px; padding: 4px 8px;">
+                         Réalisée
+                      </span>
+                    <% else %>
+                      <span class="badge rounded-pill"
+                            style="background-color: #EB5757; color: white; font-size: 12px; padding: 4px 8px;">
+                         Non réalisée
+                      </span>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>
+
+
