@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   has_many :commentaires, dependent: :destroy
 
   validates :user_id, presence: true
-  validates :contenu, length: { maximum: 140 }
+  validates :contenu, length: { maximum: 200 }
   validates :total_likes, presence: true, numericality: { only_integer: true }
 
 end
