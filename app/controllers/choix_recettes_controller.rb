@@ -4,7 +4,7 @@ class ChoixRecettesController < ApplicationController
   def index
     choix_historiques = current_user.choix_recettes
       .where("date < ?", Date.today)
-      .order(date: :asc)
+      .order(date: :desc)
       .includes(:recette)
 
     @choix_par_jour = choix_historiques.group_by(&:date)

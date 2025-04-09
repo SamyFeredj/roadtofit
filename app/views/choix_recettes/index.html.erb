@@ -1,17 +1,17 @@
-<div class="container-fluid py-3 px-3" style="background-color: #FFFACD; min-height: 100vh;">
-  <h1 class="mb-4 text-center" style="color: #1E3932; font-size: 28px; font-weight: bold;">
-    Mon historique de recettes
+<div class="container-historique" style="background-color: #FFFACD; min-height: 100vh;">
+  <h1 class="mb-5" style="color: #1E3932; font-size: 36px; font-weight: bold;">
+    Qu'est-ce que j'ai mangé déjà ?
   </h1>
 
   <% @choix_par_jour.each do |date, choix_du_jour| %>
     <div class="mb-4">
       <!-- 📅 Titre centré -->
-      <h3 class="text-center mb-3" style="color: #1E3932; font-size: 20px; font-weight: 600;">
-        <%= date.strftime("%A %d %B") %>
+      <h3 class="mb-3" style="color: #1E3932; font-size: 30px; font-weight: 700;">
+        <%= l(date, format: "%A %d %B", locale: :fr).capitalize %>
       </h3>
 
       <!-- 🧾 Scroll horizontal si trop de cartes -->
-      <div class="d-flex flex-row flex-nowrap overflow-auto gap-3 px-1">
+      <div class="d-flex flex-row flex-nowrap overflow-auto" id="carousel-historique-arlaurent">
         <% choix_du_jour.each do |choix| %>
           <% recette = choix.recette %>
           <% if recette.present? %>
@@ -57,5 +57,3 @@
     </div>
   <% end %>
 </div>
-
-
