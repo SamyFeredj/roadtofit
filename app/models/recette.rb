@@ -22,4 +22,14 @@ class Recette < ApplicationRecord
   validates :tags, presence: true
   validates :nom, presence: true
   validates :note_globale, numericality: { less_than_or_equal_to: 5, greather_than_or_equal_to: 1 }, allow_nil: true
+
+
+  def calculate_average_rating
+    if reviews.count > 0
+      self.note_globale = reviews.sum(:note) / reviews.count.to_f
+    else
+      self.note_globale = nil 
+    end
+    save!
+  end
 end

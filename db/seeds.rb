@@ -43,6 +43,30 @@ u4 = User.new(prenom: "Laurent", nom: "Millet", email: "laurentmillet@hotmail.fr
 u4.photo.attach(io: URI.open("https://res.cloudinary.com/dgxnurfcj/image/upload/v1743102639/laurent_jx3xmf.png"), filename: 'laurent.png', content_type: 'image/png')
 u4.save!
 puts "OK"
+#
+print "> User 5..."
+u5 = User.new(prenom: "Élise", nom: "Dupont", email: "elisedupont@hotmail.fr", pseudo: "lison", poids: 105, taille: 150, age: 32, sexe: "Femme", objectif_physique: "Perte de poids", password: "password")
+u5.photo.attach(io: URI.open("https://res.cloudinary.com/dz52azagy/image/upload/v1744189552/Elise-Dupont-viool-_C2_A9Foppe-Schut_hpghgo.jpg"), filename: 'elise.jpg', content_type: 'image/jpg')
+u5.save!
+puts "OK"
+#
+print "> User 6..."
+u6 = User.new(prenom: "Sophie", nom: "Martin", email: "sophiemartin@hotmail.fr", pseudo: "soso", poids: 65, taille: 176, age: 38, sexe: "Femme", objectif_physique: "Prise de muscle", password: "password")
+u6.photo.attach(io: URI.open("https://res.cloudinary.com/dz52azagy/image/upload/v1744189842/headshot_sophiemartin_-_sophie_martin_iprzap.jpg"), filename: 'sophie.jpg', content_type: 'image/jpg')
+u6.save!
+puts "OK"
+#
+print "> User 7..."
+u7 = User.new(prenom: "Camille", nom: "Lefevre", email: "camillelefevre@hotmail.fr", pseudo: "camillon", poids: 80, taille: 180, age: 29, sexe: "Femme", objectif_physique: "Perte de pods", password: "password")
+u7.photo.attach(io: URI.open("https://res.cloudinary.com/dz52azagy/image/upload/v1744190006/1695113469584_qreuog.jpg"), filename: 'camille.png', content_type: 'image/jpg')
+u7.save!
+puts "OK"
+#
+print "> User 8..."
+u8 = User.new(prenom: "Aminata", nom: "Kanouté", email: "aminatakanoute@hotmail.fr", pseudo: "mimi", poids: 59, taille: 169, age: 50, sexe: "Femme", objectif_physique: "Prise de muscle", password: "password")
+u8.photo.attach(io: URI.open("https://res.cloudinary.com/dz52azagy/image/upload/v1744190203/1692359667979_uthlh6.jpg"), filename: 'aminata.jpg', content_type: 'image/jpg')
+u8.save!
+puts "OK"
 
 puts " ===== "
 # ===== Recettes generation
@@ -518,12 +542,49 @@ p6 = Post.new(contenu: "Une recette vegan validée par la commu à faire en moin
 p6.save!
 puts "OK"
 #
+#
+print "> Post 7..."
+p7 = Post.new(contenu: "Hey, des gens qui ont déjà testé la recette du Smoothie Bowl fruits rouges et granola ?", user: u5, total_likes: 0)
+p7.save!
+puts "OK"
+#
+#
+print "> Post 8..."
+p8 = Post.new(contenu: "Salut les Fitos, juste un ptit message pour vous dire que je suis tombée amoureuse du Tofu grillé aux légumes (je l'ai fait avec du riz plutôt que des nouilles). La bise !", user: u6, total_likes: 0, image_url: "tofu.jpg")
+p8.save!
+puts "OK"
+#
+#
+print "> Post 9..."
+p9 = Post.new(contenu: "Yo la team, est-ce que des Fitos seraient partant.es pour un brunch ce dimanche (banana bred, granola, pancakes...) ? C'est moi qui invite !", user: u7, total_likes: 0)
+p9.save!
+puts "OK"
+#
+#
+print "> Post 10..."
+p10 = Post.new(contenu: "Quiche Lorraine validée à 100% !", user: u8, total_likes: 0, image_url: "quiche.jpg")
+p10.save!
+puts "OK"
+#
+#
+print "> Post 11..."
+p11 = Post.new(contenu: "Hello tout le monde ! Je cherche une idée de dessert pour ce soir, des idées ?", user: u1, total_likes: 0)
+p11.save!
+puts "OK"
+#
+#
+print "> Post 12..."
+p12 = Post.new(contenu: "Salade de pois chiches hyper simple et très bonne J'ai rajouté des concombres, c'est top !", user: u7, total_likes: 0, image_url: "salade.jpg")
+p12.save!
+puts "OK"
+#
+
 
 puts " ===== "
 # ===== Likes generation
 count = 0
-[u1, u2, u3, u4].each_with_index do |user, u_index|
-  [p1, p2, p3, p4, p5, p6].each_with_index do |post, p_index|
+[u1, u2, u3, u4, u5, u6, u7].each_with_index do |user, u_index|
+  [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12].each_with_index do |post, p_index|
     count += 1
     print "Like n°#{count} : user#{u_index + 1} | post#{p_index + 1}..."
     like_i = Like.new(user: user, post: post, like_flag: 0)
@@ -545,7 +606,7 @@ c2.save!
 puts "OK"
 #
 print "> Commentaire 3..."
-c3 = Commentaire.new(post: p2, user: u4, content: "J'avais envie de tester cette recette depuis longtemps. C'est décidé, ce midi je me lance !")
+c3 = Commentaire.new(post: p2, user: u4, content: "J'avais envie de tester cette recette depuis longtemps. C'est décidé, ce midi je me lance 😤")
 c3.save!
 puts "OK"
 #
@@ -555,9 +616,55 @@ c4.save!
 puts "OK"
 #
 print "> Commentaire 5..."
-c5 = Commentaire.new(post: p5, user: u4, content: "Ça varie pas mal d'une semaine à l'autre, mais j'essaye de me limiter à 3")
+c5 = Commentaire.new(post: p5, user: u4, content: "Ça varie pas mal d'une semaine à l'autre, mais j'essaye de me limiter à 3 😅")
 c5.save!
 puts "OK"
+#
+print "> Commentaire 6..."
+c6 = Commentaire.new(post: p7, user: u2, content: "Yes déjà testé, c'est une tuerie 🤯")
+c6.save!
+puts "OK"
+#
+print "> Commentaire 7..."
+c7 = Commentaire.new(post: p8, user: u3, content: "J'avoue qu'avec du riz ça doit être succulent. Bien ouej cuisto 👩‍🍳")
+c7.save!
+puts "OK"
+#
+print "> Commentaire 8..."
+c8 = Commentaire.new(post: p9, user: u4, content: "Trop bonne idée, je suis partant !")
+c8.save!
+puts "OK"
+#
+print "> Commentaire 9..."
+c9 = Commentaire.new(post: p9, user: u6, content: "Grave, chaud !")
+c9.save!
+puts "OK"
+#
+print "> Commentaire 10..."
+c10 = Commentaire.new(post: p10, user: u2, content: "Mamaaaaa ça a l'air fameux !")
+c10.save!
+puts "OK"
+#
+print "> Commentaire 11..."
+c11 = Commentaire.new(post: p12, user: u4, content: "Oh bien vu le twist avec les concombres, je vais tester ça. Merci 😉")
+c11.save!
+puts "OK"
+#
+print "> Commentaire 12..."
+c12 = Commentaire.new(post: p11, user: u8, content: "J'ai testé le Tiramisu l'autre jour, je ne m'en remets toujours pas. Fonce dessus !")
+c12.save!
+puts "OK"
+#
+print "> Commentaire 13..."
+c13 = Commentaire.new(post: p8, user: u5, content: "Allez hop, j'ai trouvé mon repas du soir !")
+c13.save!
+puts "OK"
+#
+print "> Commentaire 14..."
+c14 = Commentaire.new(post: p10, user: u7, content: "Ça a l'air trop bon 🤤")
+c14.save!
+puts "OK"
+
 
 # TODO : si on ajoute un jour la table ingredients
 # il faudra decommenter le code suivant
@@ -680,16 +787,19 @@ puts " ===== "
 print "> Review 1..."
 r1 = Review.new(user: u1, recette: recette1, note: 5, commentaire: "Recette très simple à réaliser et délicieuse !")
 r1.save!
+recette1.calculate_average_rating
 puts "OK"
 #
 print "> Review 2..."
 r2 = Review.new(user: u2, recette: recette1, note: 4, commentaire: "J'ai adoré, mais j'ai trouvé que c'était un peu trop salé.")
 r2.save!
+recette1.calculate_average_rating
 puts "OK"
 #
 print "> Review 3..."
 r3 = Review.new(user: u3, recette: recette1, note: 5, commentaire: "Recette parfaite, je la referai sans hésiter !")
 r3.save!
+recette1.calculate_average_rating
 puts "OK"
 
 puts " ===== "
