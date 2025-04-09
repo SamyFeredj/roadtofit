@@ -22,6 +22,10 @@
     margin: 10px 0px;
   }
 
+  &:not(:not(:last-child)) {
+    margin-bottom: 30px;
+  }
+
   .new-post-textarea {
     width: 100%;
     padding: 20px;
