@@ -53,6 +53,23 @@
   left: -66px;
 }
 
+.images-recettes-granola {
+  height: 170px;
+  width: 170px;
+  border-radius: 50%;
+  object-fit: cover;
+  top: 165px;
+  left: -25px;
+}
+
+.images-recettes-cookies {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  bottom: 215px;
+  right: -22px;
+}
 
 .slide-in-pasta {
   position: absolute;
@@ -87,6 +104,42 @@
     opacity: 1;
   }
 }
+
+.slide-in-granola {
+  position: absolute;
+  opacity: 0;
+  animation: slideInGranola 1s ease-out forwards;
+  animation-delay: 2.5s;
+}
+
+@keyframes slideInGranola {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.slide-in-cookies {
+  position: absolute;
+  opacity: 0;
+  animation: slideInCookies 1s ease-out forwards;
+  animation-delay: 3s;
+}
+
+@keyframes slideInCookies {
+  0% {
+    right: -100%;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
 
 .text-container {
   height: 100%;
