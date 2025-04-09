@@ -1,3 +1,6 @@
+
+<%= render "user_info", user: current_user %>
+
 <div class="dashboard-container" data-controller="carousel">
 
   <%= render "statistiques_dashboard", daily_cal: @daily_cal, daily_cal_left: @daily_cal_left, proteines: @proteines, glucides: @glucides, lipides: @lipides %>
@@ -8,5 +11,4 @@
 
   <%= render "recettes/best_recettes_carousel", recettes: @best_recettes %>
 
-  <h1 class="my-5">AJOUTER ICI UN LIEN VERS L'HISTORIQUE</h1>
 </div>
