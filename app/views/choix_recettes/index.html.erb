@@ -7,7 +7,7 @@
     <div class="mb-4">
       <!-- 📅 Titre centré -->
       <h3 class="text-center mb-3" style="color: #1E3932; font-size: 20px; font-weight: 600;">
-        <%= date.strftime("%A %d %B") %>
+        <%= l(date, format: "%A %d %B", locale: :fr) %>
       </h3>
 
       <!-- 🧾 Scroll horizontal si trop de cartes -->
@@ -57,5 +57,3 @@
     </div>
   <% end %>
 </div>
-
-

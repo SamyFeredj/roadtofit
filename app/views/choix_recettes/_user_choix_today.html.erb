@@ -2,12 +2,12 @@
   Qu'est-ce qu'on mange aujourd'hui ?
 </h1>
 
-<div class="scrolling-wrapper d-flex flex-row flex-nowrap overflow-auto gap-3 px-2">
+<div class="scrolling-wrapper d-flex flex-row flex-nowrap overflow-auto gap-1 px-2">
   <% choix_recettes.each do |choix| %>
     <%= render partial: "choix_recettes/card", locals: { choix: choix } %>
   <% end %>
 </div>
 
-<div class="d-flex justify-content-end my-5">
+<div class="d-flex justify-content-end mb-4 mt-4">
   <%= link_to 'Ajouter une recette pour aujourd\'hui', new_choix_recette_path, class: 'btn btn-valider-light' %>
 </div>
