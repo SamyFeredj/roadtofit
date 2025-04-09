@@ -21,3 +21,48 @@
     margin: 20px 0px;
   }
 }
+
+#carousel-arlaurent {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  padding-left: 30px;
+  scrollbar-width: none;
+}
+
+#carousel-historique-arlaurent {
+  gap: 10px;
+  scrollbar-width: none;
+}
+
+.container-historique {
+  padding: 35px;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid $color-bg;
+  border-radius: 0.15em;
+  transform: translateY(0.075em);
+}
+
+input[type="checkbox"]:checked {
+  background-color: $color-dark-green;
+  border: 0.15em solid $color-bg !important;
+}
+
+input[type="checkbox"]:focus {
+  border: 0.15em solid $color-bg !important;
+  box-shadow: none;
+}
+
+.ajouter-recette-aujd-btn {
+  padding: 30px;
+}
