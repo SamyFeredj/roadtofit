@@ -1,1 +1,202 @@
-// Specific CSS for your home-page
+.images-container {
+  height: 105vh;
+  padding: 20px;
+  margin: 0;
+  background-color: $color-second-green;
+  text-align: center;
+  color: $color-dark-green;
+  position: relative;
+  overflow: hidden;
+}
+
+#logo-home {
+  margin-top: 300px;
+}
+
+#logo-home path {
+  fill-opacity: 0;
+  stroke: $color-dark-green;
+  stroke-width: 2;
+  stroke-dasharray: 4000;
+  stroke-dashoffset: 4000;
+  animation: draw 3s ease-in-out forwards, fillIn 3s 1s ease forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fillIn {
+  to {
+    fill-opacity: 1;
+  }
+}
+
+
+.images-recettes-bowl {
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  right: -56px;
+  top: -40px;
+}
+
+.images-recettes-pasta {
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  bottom: 40px;
+  left: -66px;
+}
+
+.images-recettes-granola {
+  height: 170px;
+  width: 170px;
+  border-radius: 50%;
+  object-fit: cover;
+  top: 165px;
+  left: -25px;
+}
+
+.images-recettes-cookies {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  bottom: 215px;
+  right: -22px;
+}
+
+.slide-in-pasta {
+  position: absolute;
+  opacity: 0;
+  animation: slideInPasta 1s ease-out forwards;
+  animation-delay: 1s;
+}
+
+@keyframes slideInPasta {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.slide-in-bowl {
+  position: absolute;
+  opacity: 0;
+  animation: slideInBowl 1s ease-out forwards;
+  animation-delay: 2s;
+}
+
+@keyframes slideInBowl {
+  0% {
+    right: -100%;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.slide-in-granola {
+  position: absolute;
+  opacity: 0;
+  animation: slideInGranola 1s ease-out forwards;
+  animation-delay: 2.5s;
+}
+
+@keyframes slideInGranola {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.slide-in-cookies {
+  position: absolute;
+  opacity: 0;
+  animation: slideInCookies 1s ease-out forwards;
+  animation-delay: 3s;
+}
+
+@keyframes slideInCookies {
+  0% {
+    right: -100%;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+
+.text-container {
+  height: 100%;
+  padding: 20px;
+  margin: 0;
+  background-color: $color-second-green;
+  text-align: center;
+  color: $color-dark-green;
+  overflow: hidden;
+}
+
+.text-container p {
+  font-weight: 800;
+  margin-top: 0px;
+  padding-bottom: 15px;
+}
+
+.stats-card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.stats-card h3 {
+  padding: 10px;
+}
+
+// .images-recettes-ratatouille {
+//   height: 300px;
+//   width: 300px;
+//   border-radius: 50%;
+//   object-fit: cover;
+//   right: -30px;
+//   bottom: 200px;
+//   visibility: hidden;
+//   opacity: 0;
+// }
+
+// .images-recettes-ratatouille.visible {
+//   visibility: visible;
+//   opacity: 0;
+// }
+
+// .slide-in-ratatouille {
+//   position: absolute;
+//   opacity: 0;
+//   animation: slideInRatatouille 1s ease-out forwards;
+//   animation-delay: 0.5s;
+// }
+
+// @keyframes slideInRatatouille {
+//   0% {
+//     right: -100%;
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 1;
+//   }
+// }
