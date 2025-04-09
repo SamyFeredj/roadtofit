@@ -200,3 +200,17 @@
 //     opacity: 1;
 //   }
 // }
+
+.historique-vide {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+
+  h1 {
+    color: $color-dark-green;
+    font-weight: 600;
+  }
+}
