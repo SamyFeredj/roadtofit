@@ -143,27 +143,60 @@
 
 .text-container {
   height: 100%;
-  padding: 20px;
+  padding: 0px;
   margin: 0;
   background-color: $color-second-green;
   text-align: center;
   color: $color-dark-green;
   overflow: hidden;
+
+
+  .text {
+    margin: 10px 0px;
+    padding: 50px 20px;
+    h3 {
+      font-weight: 800;
+      margin-top: 0px;
+      margin-bottom: 30px;
+    }
+  }
 }
 
-.text-container p {
-  font-weight: 800;
-  margin-top: 0px;
-  padding-bottom: 15px;
-}
 
 .stats-card {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   padding: 10px;
+  height: 300px;
+  padding: 0px 20px;
 }
+.stats-card:nth-child(even){
+  background-color: $color-dark-green;
+  color: $color-bg;
+}
+.stats-card:nth-child(odd){
+  background-color: $color-bg;
+  color: $color-dark-green;
+}
+
+.note-appli {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+
+  p {
+    margin: 0;
+  }
+
+  h3 {
+    margin-left: 30px;
+  }
+}
+
 .stats-card h3 {
   padding: 10px;
 }
