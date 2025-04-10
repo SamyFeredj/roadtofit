@@ -33,7 +33,7 @@ u2.save!
 puts "OK"
 #
 print "> User 3..."
-u3 = User.new(prenom: "Arli", nom: "Sefgjini", email: "arlisefgjini@outlook.com", pseudo: "arlicoptere", poids: 60, taille: 130, age: 39, sexe: "Homme", objectif_physique: "Prise de muscle", password: "password")
+u3 = User.new(prenom: "Arli", nom: "Sefgjini", email: "arlisefgjini@outlook.com", pseudo: "arlicoptere", poids: 103, taille: 183, age: 26, sexe: "Homme", objectif_physique: "Perte de poids", password: "password")
 u3.photo.attach(io: URI.open("https://res.cloudinary.com/dgxnurfcj/image/upload/v1743102640/arli_upwlxd.png"), filename: 'arli.png', content_type: 'image/png')
 u3.save!
 puts "OK"
@@ -801,6 +801,56 @@ r3 = Review.new(user: u3, recette: recette1, note: 5, commentaire: "Recette parf
 r3.save!
 recette1.calculate_average_rating
 puts "OK"
+
+tiramisu = Recette.find_by(nom: "Tiramisu")
+Review.create!(user: u3, recette: tiramisu, note: 5, commentaire: "Un classique toujours aussi bon, j’ai adoré cette version maison !")
+Review.create!(user: u6, recette: tiramisu, note: 4, commentaire: "Très bon ! Un peu sucré à mon goût, mais la texture est top.")
+Review.create!(user: u7, recette: tiramisu, note: 5, commentaire: "C’est devenu mon dessert du week-end. Merci !")
+tiramisu.calculate_average_rating
+
+brownie = Recette.find_by(nom: "Brownie au chocolat protéiné")
+Review.create!(user: u1, recette: brownie, note: 5, commentaire: "Masterclass 🔥 Fondant à souhait et pas trop sucré.")
+Review.create!(user: u2, recette: brownie, note: 4, commentaire: "Très bon pour un brownie protéiné. Je m’attendais à moins de gourmandise.")
+Review.create!(user: u5, recette: brownie, note: 4, commentaire: "Surpris par le goût ! Même les enfants ont aimé.")
+brownie.calculate_average_rating
+
+carbonara = Recette.find_by(nom: "Spaghetti Carbonara")
+Review.create!(user: u3, recette: carbonara, note: 5, commentaire: "Un classique maîtrisé, ça fait plaisir 🍝")
+Review.create!(user: u6, recette: carbonara, note: 4, commentaire: "Bien bon, j’ai ajouté un peu de crème quand même 😅")
+Review.create!(user: u7, recette: carbonara, note: 4, commentaire: "Très bon, même réchauffé le lendemain !")
+carbonara.calculate_average_rating
+
+pancakes = Recette.find_by(nom: "Pancakes")
+Review.create!(user: u1, recette: pancakes, note: 5, commentaire: "Ultra moelleux, j’ai ajouté du sirop d’érable, c’était une dinguerie.")
+Review.create!(user: u8, recette: pancakes, note: 4, commentaire: "Validé par toute la famille au ptit déj 🥞")
+Review.create!(user: u4, recette: pancakes, note: 4, commentaire: "Rapide à faire et ça cale bien.")
+pancakes.calculate_average_rating
+
+quiche = Recette.find_by(nom: "Quiche Lorraine")
+Review.create!(user: u5, recette: quiche, note: 5, commentaire: "Recette validée 100%. La pâte était bien croustillante.")
+Review.create!(user: u3, recette: quiche, note: 4, commentaire: "Très bon, j’ai mis un peu de muscade en plus.")
+Review.create!(user: u2, recette: quiche, note: 3, commentaire: "Simple, efficace. J’aurais préféré plus de fromage.")
+quiche.calculate_average_rating
+
+tofu = Recette.find_by(nom: "Tofu grillé aux légumes sautés")
+Review.create!(user: u6, recette: tofu, note: 4, commentaire: "Bien assaisonné, j’ai adoré avec un peu de riz à côté.")
+Review.create!(user: u1, recette: tofu, note: 3, commentaire: "Bon mais faut aimer le tofu nature. Avec sauce soja c’est top.")
+Review.create!(user: u7, recette: tofu, note: 4, commentaire: "J’ai testé avec gingembre frais, super bon !")
+tofu.calculate_average_rating
+wrap = Recette.find_by(nom: "Wrap au poulet, crudités et houmous")
+Review.create!(user: u2, recette: wrap, note: 5, commentaire: "Super frais et rapide, j’en fais souvent le midi ! 🥙")
+Review.create!(user: u6, recette: wrap, note: 4, commentaire: "J’ai remplacé le houmous par du tzatziki, c'était nickel aussi.")
+Review.create!(user: u4, recette: wrap, note: 4, commentaire: "Simple mais efficace. Bien pour emporter.")
+
+wrap.calculate_average_rating
+
+bananabread = Recette.find_by(nom: "Bananabread healthy aux flocons d’avoine")
+Review.create!(user: u5, recette: bananabread, note: 5, commentaire: "Parfait avec mon café du matin ☕️ J’ai mis des pépites de chocolat.")
+Review.create!(user: u3, recette: bananabread, note: 4, commentaire: "Moelleux et sain, j’en refais la semaine prochaine.")
+Review.create!(user: u1, recette: bananabread, note: 3, commentaire: "Un peu moins sucré que ce que j'aime, mais validé pour un petit-déj fit.")
+bananabread.calculate_average_rating
+
+puts "Reviews pour Tiramisu, Brownie et 4 autres recettes ajoutées !"
 
 puts " ===== "
 
