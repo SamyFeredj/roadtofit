@@ -22,6 +22,10 @@
     margin: 10px 0px;
   }
 
+  &:not(:not(:last-child)) {
+    margin-bottom: 30px;
+  }
+
   .new-post-textarea {
     width: 100%;
     padding: 20px;
@@ -102,7 +106,7 @@
 
   position: absolute;
   right: 0;
-  top: 8%;
+  top: 17px;
   transform: translateX(66%);
   transition: all 0.3s ease-out;
 

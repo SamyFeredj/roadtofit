@@ -88,7 +88,9 @@
 }
 
 ul {
+
   padding: 0;
+
   li {
     margin: 0;
     padding: 0;
@@ -103,10 +105,12 @@ ul {
     justify-content: space-between;
     overflow: hidden;
   }
+
   display: grid;
   grid-template-rows: 0fr;
   list-style: none;
   transition: all 0.3s ease-out;
+
 }
 
 .display-details {

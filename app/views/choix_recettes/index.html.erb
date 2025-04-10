@@ -2,58 +2,64 @@
   <h1 class="mb-5" style="color: #1E3932; font-size: 36px; font-weight: bold;">
     Qu'est-ce que j'ai mangé déjà ?
   </h1>
+  <% if @choix_par_jour.empty? %>
+    <div class="historique-vide">
+      <h1>Il semblerait que vous n'aviez pas très faim...</h1>
+      <%= link_to "Parcourez nos recettes !", recettes_path, class: "btn btn-valider-dark" %>
+    </div>
+  <% else %>
+    <% @choix_par_jour.each do |date, choix_du_jour| %>
+      <div class="mb-4">
+        <!-- 📅 Titre centré -->
+        <h3 class="mb-3" style="color: #1E3932; font-size: 30px; font-weight: 700;">
+          <%= l(date, format: "%A %d %B", locale: :fr).capitalize %>
+        </h3>
 
-  <% @choix_par_jour.each do |date, choix_du_jour| %>
-    <div class="mb-4">
-      <!-- 📅 Titre centré -->
-      <h3 class="mb-3" style="color: #1E3932; font-size: 30px; font-weight: 700;">
-        <%= l(date, format: "%A %d %B", locale: :fr).capitalize %>
-      </h3>
+        <!-- 🧾 Scroll horizontal si trop de cartes -->
+        <div class="d-flex flex-row flex-nowrap overflow-auto" id="carousel-historique-arlaurent">
+          <% choix_du_jour.each do |choix| %>
+            <% recette = choix.recette %>
+            <% if recette.present? %>
+              <%= link_to recette_path(recette), class: "text-decoration-none", style: "color: inherit; flex: 0 0 auto;" do %>
+                <div class="recettes-card d-flex flex-column justify-content-between"
+                    style="background-color: #D1E383; border-radius: 12px; padding: 28px; width: 300px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-bottom: 30px;">
 
-      <!-- 🧾 Scroll horizontal si trop de cartes -->
-      <div class="d-flex flex-row flex-nowrap overflow-auto" id="carousel-historique-arlaurent">
-        <% choix_du_jour.each do |choix| %>
-          <% recette = choix.recette %>
-          <% if recette.present? %>
-            <%= link_to recette_path(recette), class: "text-decoration-none", style: "color: inherit; flex: 0 0 auto;" do %>
-              <div class="recettes-card d-flex flex-column justify-content-between"
-                   style="background-color: #D1E383; border-radius: 12px; padding: 28px; width: 300px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-bottom: 30px;">
+                  <!-- 📸 Image -->
+                  <% if recette.photo.attached? %>
+                    <%= image_tag recette.photo, class: "recettes-img", style: "width: 100%; height: 150px; object-fit: cover; border-radius: 1px;" %>
+                  <% else %>
+                    <%= image_tag "placeholder.jpg", class: "recettes-img", style: "width: 100%; height: 150px; object-fit: cover; border-radius: 1px;" %>
+                  <% end %>
 
-                <!-- 📸 Image -->
-                <% if recette.photo.attached? %>
-                  <%= image_tag recette.photo, class: "recettes-img", style: "width: 100%; height: 150px; object-fit: cover; border-radius: 1px;" %>
-                <% else %>
-                  <%= image_tag "placeholder.jpg", class: "recettes-img", style: "width: 100%; height: 150px; object-fit: cover; border-radius: 1px;" %>
-                <% end %>
+                  <!-- 📝 Contenu -->
+                  <div class="mt-2">
+                    <h4 style="font-size: 16px; color: #1E3932; font-weight: 600; margin-bottom: 8px;">
+                      <%= recette.nom %>
+                    </h4>
 
-                <!-- 📝 Contenu -->
-                <div class="mt-2">
-                  <h4 style="font-size: 16px; color: #1E3932; font-weight: 600; margin-bottom: 8px;">
-                    <%= recette.nom %>
-                  </h4>
-
-                  <div class="d-flex justify-content-between align-items-center">
-                    <span style="font-size: 13px; color: #555; white-space: nowrap;">
-                      <%= recette.repas_de_la_journee.capitalize %>
-                    </span>
-                    <% if choix.done? %>
-                      <span class="badge rounded-pill"
-                            style="background-color: #6FCF97; color: white; font-size: 12px; padding: 4px 8px;">
-                         Réalisée
+                    <div class="d-flex justify-content-between align-items-center">
+                      <span style="font-size: 13px; color: #555; white-space: nowrap;">
+                        <%= recette.repas_de_la_journee.capitalize %>
                       </span>
-                    <% else %>
-                      <span class="badge rounded-pill"
-                            style="background-color: #EB5757; color: white; font-size: 12px; padding: 4px 8px;">
-                         Non réalisée
-                      </span>
-                    <% end %>
+                      <% if choix.done? %>
+                        <span class="badge rounded-pill"
+                              style="background-color: #6FCF97; color: white; font-size: 12px; padding: 4px 8px;">
+                          Réalisée
+                        </span>
+                      <% else %>
+                        <span class="badge rounded-pill"
+                              style="background-color: #EB5757; color: white; font-size: 12px; padding: 4px 8px;">
+                          Non réalisée
+                        </span>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
