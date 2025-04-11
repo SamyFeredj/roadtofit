@@ -583,7 +583,7 @@ puts "OK"
 puts " ===== "
 # ===== Likes generation
 count = 0
-[u1, u2, u3, u4, u5, u6, u7].each_with_index do |user, u_index|
+[u1, u2, u3, u4, u5, u6, u7, u8].each_with_index do |user, u_index|
   [p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12].each_with_index do |post, p_index|
     count += 1
     print "Like n°#{count} : user#{u_index + 1} | post#{p_index + 1}..."
