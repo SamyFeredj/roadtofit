@@ -499,13 +499,14 @@ recettes = [
 ]
 
 
-
+recettes_instance = []
 recettes.each_with_index do |recette, index|
   print "> Recette #{index + 3}..."
   r = Recette.new(recette)
   r.tags = "Default"
   r.photo.attach(io: URI.open(liens[index]), filename: "recette#{index + 3}.jpg", content_type: 'image/jpg')
   r.save!
+  recettes_instance << r
   puts "OK"
 end
 
@@ -853,6 +854,81 @@ bananabread.calculate_average_rating
 puts "Reviews pour Tiramisu, Brownie et 4 autres recettes ajoutées !"
 
 puts " ===== "
+# ===== Historique generation
+print "> Choix recette 1..."
+date1 = Date.new(2025, 4, 5)
+c1 = ChoixRecette.new(user: u3, recette: recettes_instance[4], done: false, date: date1)
+c1.save!
+puts "OK"
+#
+print "> Choix recette 2..."
+date2 = Date.new(2025, 4, 5)
+c2 = ChoixRecette.new(user: u3, recette: recettes_instance[5], done: true, date: date2)
+c2.save!
+puts "OK"
+#
+print "> Choix recette 3..."
+date3 = Date.new(2025, 4, 6)
+c3 = ChoixRecette.new(user: u3, recette: recettes_instance[13], done: true, date: date3)
+c3.save!
+puts "OK"
+#
+print "> Choix recette 4..."
+date4 = Date.new(2025, 4, 6)
+c4 = ChoixRecette.new(user: u3, recette: recettes_instance[24], done: true, date: date4)
+c4.save!
+puts "OK"
+#
+print "> Choix recette 5..."
+date5 = Date.new(2025, 4, 7)
+c5 = ChoixRecette.new(user: u3, recette: recettes_instance[25], done: false, date: date5)
+c5.save!
+puts "OK"
+#
+print "> Choix recette 6..."
+date6 = Date.new(2025, 4, 7)
+c6 = ChoixRecette.new(user: u3, recette: recettes_instance[21], done: true, date: date6)
+c6.save!
+puts "OK"
+#
+print "> Choix recette 7..."
+date7 = Date.new(2025, 4, 8)
+c7 = ChoixRecette.new(user: u3, recette: recettes_instance[15], done: true, date: date7)
+c7.save!
+puts "OK"
+#
+print "> Choix recette 8..."
+date8 = Date.new(2025, 4, 9)
+c8 = ChoixRecette.new(user: u3, recette: recettes_instance[16], done: true, date: date8)
+c8.save!
+puts "OK"
+#
+print "> Choix recette 9..."
+date9 = Date.new(2025, 4, 10)
+c9 = ChoixRecette.new(user: u3, recette: recettes_instance[10], done: false, date: date9)
+c9.save!
+puts "OK"
+#
+print "> Choix recette 10..."
+date10 = Date.new(2025, 4, 10)
+c10 = ChoixRecette.new(user: u3, recette: recettes_instance[5], done: true, date: date10)
+c10.save!
+puts "OK"
+#
+print "> Choix recette 11..."
+date11 = Date.new(2025, 4, 12)
+c11 = ChoixRecette.new(user: u3, recette: recettes_instance[3], done: true, date: date11)
+c11.save!
+puts "OK"
+#
+print "> Choix recette 12..."
+date12 = Date.new(2025, 4, 12)
+c12 = ChoixRecette.new(user: u3, recette: recettes_instance[9], done: true, date: date12)
+c12.save!
+puts "OK"
+
+puts " ===== "
+
 
 # ===== End of generation
 puts "#{User.count} Users generated successfully"
@@ -861,3 +937,5 @@ puts "#{Post.count} Posts generated successfully"
 puts "#{Like.count} Likes generated successfully"
 puts "#{Commentaire.count} Commentaires generated successfully"
 puts "#{Review.count} Reviews generated successfully"
+puts "#{ChoixRecette.count} ChoixRecettes generated successfully"
+puts "Seeding completed successfully!"
